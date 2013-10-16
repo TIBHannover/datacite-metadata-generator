@@ -6,7 +6,9 @@ add_orcid_widget = (creator) ->
         lookup_text : "Lookup ORCID"
         wrap_html : '<span class="orcid_wrapper">'
         post_lookup_success_handler : (data, obj, settings) ->
-            $('#nameidentifierscheme', creator).val "ORCID"
+            $('#nameidentifierscheme', creator)
+                .val("ORCID")
+                .trigger("keyup") # force update of xml window
 
     $('button.my_orcid_search', creator).click () ->
         $('.orcid_search_div').show()
