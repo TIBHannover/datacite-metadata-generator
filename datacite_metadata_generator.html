@@ -14,6 +14,12 @@ $(document).ready(function(){var pageTitle="DataCite Metadata Generator - Kernel
 <style>
 body{font-family:sans-serif}.hidden{display:none}.visible{display:block}.input-field{margin-bottom:2px;width:89%}input.attrib{width:43%}select.attrib{width:45%}.tag{float:left;margin-top:2px;width:80%}div.left{float:left;width:38%}div.right{float:right;width:61%}div.entry{margin-bottom:6px}div.form{padding:12px}div.form div{width:100%}input,select{border-radius:4px;border-style:solid;border-width:1px;margin-bottom:10px;margin-top:0;min-height:18px!important;padding:4px}.right button{margin:2px}button{float:right;font-weight:400}button:hover{background-position:0 -15px;outline-offset:-6px;text-decoration:none;transition:background-position .1s linear 0s}input:focus,select:focus{border-color:#176ca7;box-shadow:0 1px 1px rgba(0,0,0,0.05) inset,0px 0 8px #99cdf1;transition:border .2s linear 0s,box-shadow .2s linear 0s}div.right>div,div.left>div{background:none repeat scroll 0 center #f6f6f6;color:#222222 !important;outline:1px solid gainsboro}div.right h3{background-color:#666666;background-image:linear-gradient(#666666,#545454);background-repeat:repeat-x;background-size:100% auto;border-collapse:collapse;border-spacing:0;border-top-left-radius:4px;border-top-right-radius:4px;color:#ffffff;direction:ltr;font-family:sans-serif;font-size:12.8px;font-weight:700;line-height:19.2px;margin:0 0 1px;padding:5px 10px;text-align:left;text-shadow:#222222 0 1px 1px;vertical-align:bottom}div.left h3{background-color:#176ca7;background-image:linear-gradient(#176ca7,#135888);background-repeat:repeat-x;background-size:100% auto;border-collapse:collapse;border-spacing:0;border-top-left-radius:4px;border-top-right-radius:4px;color:#ffffff;direction:ltr;font-family:sans-serif;font-size:12.8px;font-weight:700;line-height:19.2px;margin:0 0 1px;padding:5px 10px;text-align:left;text-shadow:#222222 0 1px 1px;vertical-align:bottom}h3.recommended:hover,h3.other:hover,button:hover{cursor:pointer}h1,h2{color:#0084B9}span.divider{border-bottom:1px gainsboro solid;float:left;line-height:3px;margin-bottom:5px;width:100%}pre{white-space:pre-wrap;word-wrap:break-word}span.output{float:left}a.button{-moz-text-blink:none;-moz-text-decoration-color:#ffffff;-moz-text-decoration-line:none;-moz-text-decoration-style:solid;background-color:#176ca7;background-image:linear-gradient(#176ca7,#114f7a);background-repeat:repeat-x;background-size:100% auto;border-bottom-color:#0b324d;border-bottom-left-radius:4px;border-bottom-right-radius:4px;border-bottom-style:solid;border-bottom-width:1px;border-collapse:collapse;border-left-color:#0e4164;border-left-style:solid;border-left-width:1px;border-right-color:#0e4164;border-right-style:solid;border-right-width:1px;border-spacing:0;border-top-color:#0e4164;border-top-left-radius:4px;border-top-right-radius:4px;border-top-style:solid;border-top-width:1px;box-shadow:rgba(255,255,255,0.2) 0 1px 0 0 inset,rgba(0,0,0,0.05) 0 1px 2px 0;color:#ffffff;cursor:pointer;direction:ltr;display:inline-block;font-family:Arial,Verdana,Helvetica,sans-serif;font-size:13.3333px;font-weight:400;line-height:16px;padding:4px 10px;text-align:center;text-decoration:none;text-shadow:#222222 0 1px 1px;vertical-align:middle}
 </style>
+<script type="text/javascript" src="http://devl.ands.org.au/minh/apps/assets/orcid_widget/dist/orcid_widget.min.js"></script>
+<link rel="stylesheet" type="text/css" href="http://devl.ands.org.au/minh/apps/assets/orcid_widget/css/orcid_widget.css" />
+<script type="text/coffeescript" src="orcid.coffee"></script>
+<script src="http://coffeescript.org/extras/coffee-script.js"></script>
+<link rel="stylesheet" type="text/css" href="orcid.css" />
+
 </head>
 <body>
 <h2 class="pagetitle"></h2>
@@ -41,8 +47,9 @@ body{font-family:sans-serif}.hidden{display:none}.visible{display:block}.input-f
 		<button type="button" id="add">+</button>
 		<div id="creator" class="entry">
 			<input class="input-field" id="creatorname" type="text" placeholder="[CREATOR NAME]" title="creatorName" value="" />
-			<input class="input-field attrib" type="text" id="nameidentifier" placeholder="[NAME IDENTIFIER]" title="nameIdentifier" value="" />			
+ 			<button type="button" class="my_orcid_search">Search ORCID</button>
 			<input class="input-field attrib" type="text" id="nameidentifierscheme" placeholder="[NAME ID SCHEME]" title="nameIdentifierScheme" value="" />			
+			<input class="input-field attrib" type="text" id="nameidentifier" placeholder="[NAME IDENTIFIER]" title="nameIdentifier" value="" />			
 			<input class="input-field" type="text" id="schemeuri" placeholder="[IDENTIFIER SCHEME URI]" title="schemeURI" value="" />
 		</div>
 	</div>

@@ -1,0 +1,20 @@
+.orcid_search_div, .orcid_success_div {
+    width: 500px !important;
+}
+
+#creatorname {
+    width: 400px;
+}
+
+#nameidentifierscheme {
+    width: 142px;
+}
+
+button.my_orcid_search {
+    float: none;
+}
+
+button.orcid_search, .orcid_search_input, .search_orcid {
+    display: none;
+}
+
