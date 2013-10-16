@@ -5,7 +5,7 @@ This is a HTML form which can be used to generate DataCite Metadata Kernel 3.0 X
 
 How to use:
 ===========
-- [Open datacite-metadata-generator](https://rawgithub.com/koelnconcert/datacite-metadata-generator/master/datacite_metadata_generator.html)
+- [Open datacite-metadata-generator](http://rawgithub.com/koelnconcert/datacite-metadata-generator/master/datacite_metadata_generator.html)
 - Start creating metadata.
 - Use 'Select All' button to copy and paste results or 'Ready to Save' button to save results to a file.
 
