@@ -22,7 +22,7 @@ add_orcid_widget = (creator) ->
 remove_orcid_widget = (creator) ->
     wrapper = $ '.orcid_wrapper', creator
     input = $ '#nameidentifier', wrapper
-    $('#nameidentifierscheme', creator).after input
+    $('#nameidentifierscheme', creator).after " ", input
     wrapper.remove()
 
 
