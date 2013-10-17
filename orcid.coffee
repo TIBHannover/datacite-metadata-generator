@@ -11,7 +11,7 @@ add_orcid_widget = (creator) ->
                 .trigger("keyup") # force update of xml window
 
     $('button.my_orcid_search', creator).click () ->
-        $('.orcid_search_div').show()
+        $('.orcid_search_div', creator).show()
         
         name = $('#creatorname', creator).val()
         $('.orcid_search_input', creator).val(name)
