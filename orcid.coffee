@@ -19,7 +19,23 @@ add_orcid_widget = (creator) ->
         $('a.search_orcid', creator).trigger "click"
 
 
+remove_orcid_widget = (creator) ->
+    wrapper = $ '.orcid_wrapper', creator
+    input = $ '#nameidentifier', wrapper
+    $('#nameidentifierscheme', creator).after input
+    wrapper.remove()
+
+
+refresh_orcid_widget = (creator) ->
+    remove_orcid_widget creator
+    add_orcid_widget creator
+
+
 $(document).ready () ->
-    add_orcid_widget document
+    add_orcid_widget $('#creator')
+
+    $("#creators button#add").click (event) ->
+        creator = $("#creators .orcid_wrapper").last().parent()
+        refresh_orcid_widget creator
 
 
