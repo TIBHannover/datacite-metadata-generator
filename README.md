@@ -14,7 +14,7 @@ Uses:
 - HTML5
 - CSS3
 - JQuery 1.9.1
-- [JQuery ORCID widget](http://devl.ands.org.au/minh/developer/documentation/widgets/orcid_widget)
+- [JQuery ORCID widget](http://researchdata.ands.org.au/developers/documentation/widgets/orcid_widget)
 
 Notes:
 ======
