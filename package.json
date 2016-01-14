@@ -1,0 +1,14 @@
+{
+  "name": "datacite-metadata-generator",
+  "version": "0.0.0",
+  "description": "single HTML form to generate DataCite Metadata XML",
+  "dependencies": {},
+  "devDependencies": {
+    "gulp": "^3.9.0",
+    "gulp-inject": "^3.0.0",
+    "gulp-rename": "^1.2.2",
+    "gulp-wrap": "^0.11.0"
+  },
+  "author": "",
+  "license": "MIT"
+}
