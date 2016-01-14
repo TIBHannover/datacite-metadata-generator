@@ -2,6 +2,8 @@ var gulp = require('gulp');
 var inject = require('gulp-inject');
 var wrap = require('gulp-wrap');
 var rename = require('gulp-rename');
+var uglify = require('gulp-uglify');
+var minifyCss = require('gulp-minify-css');
 
 function injectContent(stream) {
   return inject(stream, {
@@ -13,8 +15,10 @@ function injectContent(stream) {
 
 gulp.task("default", function() {
   var js = gulp.src(['src/dmg.js'])
+    .pipe(uglify())
     .pipe(wrap("<script type=\"text/javascript\">\n<%= contents %>\n</script>"));
   var css = gulp.src(['src/dmg.css'])
+    .pipe(minifyCss())
     .pipe(wrap("<style>\n<%= contents %>\n</style>"));
 
   gulp.src('src/dmg.html')
