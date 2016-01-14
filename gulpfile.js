@@ -14,7 +14,7 @@ function injectContent(stream) {
 }
 
 gulp.task("default", function() {
-  var js = gulp.src(['src/dmg.js'])
+  var js = gulp.src(['node_modules/jquery/jquery.js','src/dmg.js'])
     .pipe(uglify())
     .pipe(wrap("<script type=\"text/javascript\">\n<%= contents %>\n</script>"));
   var css = gulp.src(['src/dmg.css'])
