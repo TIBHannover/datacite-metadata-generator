@@ -32,8 +32,7 @@ function fillFormFromXML(xml) {
     add_button = determineCorrectButton(form_elem, add_button);
     if (form_elem.length > 0 && form_elem.not(".crosswalked").length === 0){
       if (add_button === null) {
-        console.error("no button found for creating new form_elem for reoccurring xml_elem",
-          xml_elem, form_elem, add_button);
+        error("non repeatable element", xml_elem, form_elem);
         return;
       }
       console.debug("trigger button", add_button, xml_elem, form_elem);
@@ -48,7 +47,7 @@ function fillFormFromXML(xml) {
     } else if (form_elem.length == 1) {
       callback(form_elem, add_button);
     } else {
-      console.error("cannot find unique form element for xml element", tag, form_elem, xml, form);
+      error("unknown xml element", xml_elem, form_elem);
     }
   }
 
@@ -78,7 +77,7 @@ function fillFormFromXML(xml) {
     if (form_field.length == 1) {
       form_field.val(value);
     } else {
-      console.warn("cannot find unique form field for xml element", tag, form_field, xml_elem, form_elem);
+      error("unknown xml element", xml_elem, form_elem);
     }
   }
 
@@ -91,14 +90,33 @@ function fillFormFromXML(xml) {
       if (form_field.length == 1) {
         form_field.val(value);
       } else {
-        console.warn("cannot find unique form field for xml attribute", tag + "@" + attr, form_field, xml_elem, form_elem);
+        error("unknown xml attribute '" + attr + "'", xml_elem, form_elem);
       }
     });
   }
+
+  function error(msg, xml, form) {
+    msg = "Could not fill form for " + getXPath(xml) + ": " + msg;
+    $("#log").append(msg + "\n");
+    console.error(msg, xml, form);
+  }
+}
+
+function getXPath(el) {
+  if (el.parentNode === null)
+    return "";
+  var path =  getXPath(el.parentNode) + "/" + el.nodeName;
+  var siblings = $(el).siblings(el.nodeName).length;
+  if (siblings > 0) {
+    var pos = $(el).prevAll(el.nodeName).length + 1;
+    path += "[" + pos + "]";
+  }
+  return path;
 }
 
 $(document).ready(function() {
   $("#loadfile").change(function() {
+    $("#log").text("");
     var freader = new FileReader();
     freader.onload = function(event) {
       var xml_str = event.target.result;
