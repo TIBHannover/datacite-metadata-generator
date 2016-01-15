@@ -121,8 +121,13 @@ $(document).ready(function() {
     var freader = new FileReader();
     freader.onload = function(event) {
       var xml_str = event.target.result;
-      var xml = $.parseXML(xml_str);
-      fillFormFromXML(xml);
+      try {
+        var xml = $.parseXML(xml_str);
+        fillFormFromXML(xml);
+      } catch(err) {
+        console.error(err);
+        $("#log").text(err);
+      }
       $("#loadfile").val("");
     };
     freader.readAsText(this.files[0]);
