@@ -16,6 +16,7 @@ function fillFormFromXML(xml) {
     console.debug("crossWalk", xml, form, add_button);
     $(xml).children().each(function(idx,xml_elem) {
       findFormElement(xml_elem, form, add_button, function(form_elem, add_button) {
+        $(form_elem).parents(".form.hidden").show();
         fillForm(xml_elem, form_elem);
         crossWalk(xml_elem, form_elem, add_button);
       });
