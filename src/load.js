@@ -98,7 +98,14 @@ function fillFormFromXML(xml) {
 }
 
 $(document).ready(function() {
-  $.get("example.xml", function(xml) {
-    fillFormFromXML(xml);
+  $("#loadfile").change(function() {
+    var freader = new FileReader();
+    freader.onload = function(event) {
+      var xml_str = event.target.result;
+      var xml = $.parseXML(xml_str);
+      fillFormFromXML(xml);
+      $("#loadfile").val("");
+    };
+    freader.readAsText(this.files[0]);
   });
 });
