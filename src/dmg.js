@@ -99,14 +99,17 @@ $(document).ready(function() {
 });
 
 var optionValues = {};
-optionValues["descriptionType"] = ["Abstract", "Methods", "SeriesInformation", "TableOfContents", "Other"];
-optionValues["relatedIdentifierType"] = ["ARK", "arXiv", "bibcode", "DOI", "EAN13", "EISSN", "Handle", "ISBN", "ISSN", "ISTC", "LISSN", "LSID", "PMID", "PURL", "UPC", "URL", "URN"];
-optionValues["relationType"] = ["IsCitedBy", "Cites", "IsSupplementTo", "IsSupplementedBy", "IsContinuedBy", "Continues", "IsNewVersionOf", "IsPreviousVersionOf", "IsPartOf", "HasPart", "IsReferencedBy", "References", "IsDocumentedBy", "Documents", "IsCompiledBy", "Compiles", "IsVariantFormOf", "IsOriginalFormOf", "IsIdenticalTo", "HasMetadata", "IsMetadataFor", "Reviews", "IsReviewedBy", "IsDerivedFrom", "IsSourceOf"];
-optionValues["resourceTypeGeneral"] = ["Audiovisual", "Collection", "Dataset", "Event", "Image", "InteractiveResource", "Model", "PhysicalObject", "Service", "Software", "Sound", "Text", "Workflow", "Other"];
-optionValues["dateType"] = ["Accepted", "Available", "Copyrighted", "Collected", "Created", "Issued", "Submitted", "Updated", "Valid"];
-optionValues["contributorType"] = ["ContactPerson", "DataCollector", "DataCurator", "DataManager", "Distributor", "Editor", "Funder", "HostingInstitution", "Other", "Producer", "ProjectLeader", "ProjectManager", "ProjectMember", "RegistrationAgency", "RegistrationAuthority", "RelatedPerson", "Researcher", "ResearchGroup", "RightsHolder", "Sponsor", "Supervisor", "WorkPackageLeader"];
+optionValues["descriptionType"] = ["Abstract", "TechnicalRemarks"];
+optionValues["resourceType"] = ["Audio", "Audiovisual", "Collection", "Dataset", "Event", "Image", "InteractiveResource", "Model", "PhysicalObject", "Service", "Software"];
 optionValues["titleType"] = ["AlternativeTitle", "Subtitle"];
 optionValues["language"] = ["ger", "eng", "qno", "qsw", "alb", "dan", "fre", "grc", "chi", "heb", "ita", "jpn", "kor", "hrv", "dut", "nor", "pol", "por", "rus", "swe", "srp", "slo", "slv", "spa", "cze", "tur", "hun", "mul", "qot", "zxx", "mis"];
+optionValues["videoSubtitleLanguage"] = optionValues.language;
+optionValues["subjectArea"] = ["Architecture", "Arts and Media", "Biology", "Chemistry", "Economics and Social Science", "Environmental Sciences/Ecology", "Ethnology", "Geological Sciences", "History", "Information Science", "Information Technology", "Mathematics", "Medicine", "Physics", "Psychology", "Sports", "Technology/Engineering"];
+optionValues["genre"] = ["Computer Animation", "Conference", "Experiment", "Interview", "Lecture", "Research Data"];
+optionValues["additionalMaterialType"] = ["File", "URL"];
+optionValues["relatedIdentifierType"] = ["ARK", "DOI", "EAN13", "EISSN", "Handle", "ISBN", "ISSN", "ISTC", "LISSN", "LSID", "PMID", "PROBADO", "PURL", "UPC", "URN"];
+optionValues["relationType"] = ["cites", "isCitedBy", "isSupplementedBy", "isSupplementTo"];
+optionValues["linkType"] = ["av_portal", "linkToExternalData", "linkToThumbnail", "flash_lq", "flash_hq"];
 
 function process(section){
 	var isWrapper = $(section).hasClass("wrapper-tag");
