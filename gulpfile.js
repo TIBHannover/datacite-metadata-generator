@@ -24,6 +24,6 @@ gulp.task("default", function() {
   gulp.src('src/dmg.html')
     .pipe(injectContent(js))
     .pipe(injectContent(css))
-    .pipe(rename("datacite_metadata_generator.html"))
+    .pipe(rename("tib_ntm_metadata_generator.html"))
     .pipe(gulp.dest('./'));
 });
