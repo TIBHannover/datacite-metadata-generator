@@ -1,7 +1,7 @@
 $(document).ready(function() {
-  var kernelVersion = "3.1";
-  var kernelNamespace = "http://datacite.org/schema/kernel-3";
-  var kernelSchema = "http://schema.datacite.org/meta/kernel-3/metadata.xsd";
+  var kernelVersion = "2.2";
+  var kernelNamespace = "http://www.tib-hannover.de/ext/knm/NTM-Metadata-Schema_v_2.2.xsd";
+  var kernelSchema = "NTM-Metadata-Schema_v_2.2.xsd";
   var kernelSchemaLocation = kernelNamespace + " " + kernelSchema;
   var header = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>" + br() + "<resource xmlns=\"" + kernelNamespace + "\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:schemaLocation=\"" + kernelSchemaLocation + "\">" + br();
   $("select[title]").each(function(){

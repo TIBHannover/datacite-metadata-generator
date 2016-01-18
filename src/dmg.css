@@ -120,8 +120,8 @@ div.right h3 {
     vertical-align: bottom
 }
 div.left h3 {
-    background-color: #176ca7;
-    background-image: linear-gradient(#176ca7, #135888);
+    background-color: #af1414;
+    background-image: linear-gradient(#d51616, #af1414);
     background-repeat: repeat-x;
     background-size: 100% auto;
     border-collapse: collapse;
@@ -157,7 +157,7 @@ button:hover {
 }
 h1,
 h2 {
-    color: #0084b9
+    color: #c01f25
 }
 span.divider {
     border-bottom: 1px gainsboro solid;
