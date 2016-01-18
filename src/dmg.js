@@ -43,7 +43,7 @@ $(document).ready(function() {
     d.appendTo($(this).parent());
     if (callback !== null) callback(d);
   });
-  
+
   $("div.section").on("mouseenter mouseleave focusin focusout", "button.delete.group, button.delete.single-tag", function(event){
 	 event.preventDefault();
 	 $(this).parent().toggleClass("remove-highlight");
@@ -105,74 +105,75 @@ optionValues["relationType"] = ["IsCitedBy", "Cites", "IsSupplementTo", "IsSuppl
 optionValues["resourceTypeGeneral"] = ["Audiovisual", "Collection", "Dataset", "Event", "Image", "InteractiveResource", "Model", "PhysicalObject", "Service", "Software", "Sound", "Text", "Workflow", "Other"];
 optionValues["dateType"] = ["Accepted", "Available", "Copyrighted", "Collected", "Created", "Issued", "Submitted", "Updated", "Valid"];
 optionValues["contributorType"] = ["ContactPerson", "DataCollector", "DataCurator", "DataManager", "Distributor", "Editor", "Funder", "HostingInstitution", "Other", "Producer", "ProjectLeader", "ProjectManager", "ProjectMember", "RegistrationAgency", "RegistrationAuthority", "RelatedPerson", "Researcher", "ResearchGroup", "RightsHolder", "Sponsor", "Supervisor", "WorkPackageLeader"];
-optionValues["titleType"] = ["AlternativeTitle", "Subtitle", "TranslatedTitle"];
+optionValues["titleType"] = ["AlternativeTitle", "Subtitle"];
+optionValues["language"] = ["ger", "eng", "qno", "qsw", "alb", "dan", "fre", "grc", "chi", "heb", "ita", "jpn", "kor", "hrv", "dut", "nor", "pol", "por", "rus", "swe", "srp", "slo", "slv", "spa", "cze", "tur", "hun", "mul", "qot", "zxx", "mis"];
 
-function process(section){		
+function process(section){
 	var isWrapper = $(section).hasClass("wrapper-tag");
 	var indent = 0;
 	var xml = "";
-		
+
 	if (isWrapper){
 		indent = 1;
 	}
-	
+
 	$(section).find(".tag-group>.tag").each(function(){
 		xml += processTag(this,indent);
 	})
-	
-	if (xml.length > 0){		
+
+	if (xml.length > 0){
 		if (isWrapper){
 			var wrapperName = name(section);
 			xml = ot(wrapperName) + br() + xml + ct(wrapperName) + br();
 		}
-	}	
-	
+	}
+
 	return xml;
 }
 
-function processTag(tag, indent){		
+function processTag(tag, indent){
 	var xml = "";
 	var attributes;
 	var value;
 	var tagName = name(tag);
 	var attr = attribs(tag);
-	
+
 	var tagValues = $(tag).children(".tag-value");
 	var tagChildren = $(tag).children(".tag");
-	
+
 	if ($(tagValues).length){
 		value = inputValue(tagValues[0]);
-	}	 
+	}
 
 	$(tag).find(".tag").each(function(){
-		xml += processTag(this,indent + 1);		
+		xml += processTag(this,indent + 1);
 	});
-		
+
 	if (xml.length > 0){
 		xml = tab(indent) + ota(tagName,attr) + br() + xml + tab(indent) + ct(tagName) + br();
 	}
 	else if(typeof value !== "undefined" && value.length > 0){
 		xml = tab(indent) + ota(tagName,attr) + value + ct(tagName) + br();
 	}
-		
+
 	return xml;
 }
 
-function attribs(element){	
+function attribs(element){
 	var attribs = "";
-	
+
 	$(element).children(".tag-attribute").each(function(){
 		var value = "";
-		var n = name(this);				
-		
+		var n = name(this);
+
 		if ( $(this).is("input") ){
 			value = inputValue(this);
 		}
-		
+
 		if ( $(this).is("select") ){
 			value = selectValue(this);
 		}
-		
+
 		if (value.length > 0){
 			if (attribs.length > 0){
 				attribs += " ";
@@ -180,7 +181,7 @@ function attribs(element){
 			attribs += n + "=\"" + value +"\"";
 		}
 	});
-	
+
 	return attribs;
 }
 

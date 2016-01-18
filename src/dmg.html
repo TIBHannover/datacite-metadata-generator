@@ -24,27 +24,6 @@
 <div class="left">
 <h3 class="mandatory">Mandatory Elements</h3>
 <div class="form mandatory">
-	<div class="section">
-		<span class="tag-group-label">DOI:</span>
-		<div class="tag-group">
-			<div title="identifier" class="tag">
-				<input class="input-field full-width tag-value" type="text" placeholder="[DOI]" title="identifier" value="" />
-				<input class="input-field tag-attribute" type="hidden" title="identifierType" value="DOI" />
-			</div>
-		</div>
-	</div>
-	<span class="divider">&nbsp;</span>
-	<div title="titles" class="section wrapper-tag">
-		<span class="tag-group-label">Title(s):</span>
-		<button type="button" class="add group">+</button>
-		<div class="tag-group">
-			<div title="title" class="tag">
-				<input class="full-width input-field tag-value" type="text" placeholder="[TITLE]" title="title" value="" />
-				<select class="half-width input-field tag-attribute" title="titleType"></select>
-			</div>
-		</div>
-	</div>
-	<span class="divider">&nbsp;</span>
 	<div title="creators" class="section wrapper-tag">
 		<span class="tag-group-label">Creator(s):</span>
 		<button type="button" class="add group">+</button>
@@ -56,20 +35,40 @@
 				<div title="nameIdentifier" class="tag">
 					<input class="half-width input-field tag-value" type="text" placeholder="[NAME IDENTIFIER]" title="nameIdentifier" value="" />
 					<input class="half-width input-field tag-attribute" type="text" placeholder="[NAME ID SCHEME]" title="nameIdentifierScheme" value="" />
+					<button type="button" class="add single-tag">+</button>
 					<input class="full-width input-field tag-attribute" type="text" placeholder="[IDENTIFIER SCHEME URI]" title="schemeURI" value="" />
-				</div>
-				<div title="affiliation" class="tag">
-					<input class="unbounded-width input-field tag-value" type="text" placeholder="[CREATOR AFFILIATION]" title="affiliation" value="" /><button type="button" class="add single-tag">+</button>
 				</div>
 			</div>
 		</div>
 	</div>
 	<span class="divider">&nbsp;</span>
-	<div class="section">
-		<span class="tag-group-label">Publisher:</span>
+	<div title="titles" class="section wrapper-tag">
+		<span class="tag-group-label">Title(s):</span>
+		<button type="button" class="add group">+</button>
+		<div class="tag-group">
+			<div title="title" class="tag">
+				<input class="full-width input-field tag-value" type="text" placeholder="[TITLE]" title="title" value="" />
+				<select class="half-width input-field tag-attribute" title="titleType"></select>
+				<select class="half-width input-field tag-attribute" title="language"></select>
+				<!-- in xsd @language has just pattern "[a-z]{3}". Controlled vocabulary requested by Team NTM -->
+			</div>
+		</div>
+	</div>
+	<span class="divider">&nbsp;</span>
+	<div title="publishers" class="section wrapper-tag">
+		<span class="tag-group-label">Publisher(s):</span>
+		<button type="button" class="add group">+</button>
 		<div class="tag-group">
 			<div title="publisher" class="tag">
-				<input type="text" class="full-width input-field tag-value" placeholder="[PUBLISHER]" title="publisher" value="" />
+				<div title="publisherName" class="tag">
+					<input class="full-width input-field tag-value" type="text" placeholder="[PUBLISHER NAME]" title="publisherName" value="" />
+				</div>
+				<div title="nameIdentifier" class="tag">
+					<input class="half-width input-field tag-value" type="text" placeholder="[NAME IDENTIFIER]" title="nameIdentifier" value="" />
+					<input class="half-width input-field tag-attribute" type="text" placeholder="[NAME ID SCHEME]" title="nameIdentifierScheme" value="" />
+					<button type="button" class="add single-tag">+</button>
+					<input class="full-width input-field tag-attribute" type="text" placeholder="[IDENTIFIER SCHEME URI]" title="schemeURI" value="" />
+				</div>
 			</div>
 		</div>
 	</div>
@@ -79,9 +78,21 @@
 		<div class="tag-group">
 			<div title="publicationYear" class="tag">
 				<input type="text" class="full-width input-field tag-value" placeholder="[YYYY]" title="publicationYear" pattern="[0-9]{4}" value="" />
+				<!-- in xsd publicationYear is of type "xs:gYear", allowing time zone as well -->
 			</div>
 		</div>
 	</div>
+	<span class="divider">&nbsp;</span>
+	<div class="section">
+		<span class="tag-group-label">Language:</span>
+		<div class="tag-group">
+			<div title="language" class="tag">
+				<select class="full-width input-field tag-value" title="language"></select>
+				<!-- in xsd @language has just pattern "[a-z]{3}". Controlled vocabulary requested by Team NTM -->
+			</div>
+		</div>
+	</div>
+	<span class="divider">&nbsp;</span>
 </div>
 <h3 class="recommended">+ Recommended Elements</h3>
 <div id="recommended" class="form recommended hidden">
@@ -93,6 +104,16 @@
 				<input class="half-width input-field tag-value" type="text" placeholder="[SUBJECT]" title="subject" value="" />
 				<input class="half-width input-field tag-attribute" type="text" placeholder="[SUBJECT SCHEME]" title="subjectScheme" value="" />
 				<input class="full-width input-field tag-attribute" type="text" placeholder="[SUBJECT SCHEME URI]" title="schemeURI" value="" />
+			</div>
+		</div>
+	</div>
+	<span class="divider">&nbsp;</span>
+	<div class="section">
+		<span class="tag-group-label">DOI:</span>
+		<div class="tag-group">
+			<div title="identifier" class="tag">
+				<input class="input-field full-width tag-value" type="text" placeholder="[DOI]" title="identifier" value="" />
+				<input class="input-field tag-attribute" type="hidden" title="identifierType" value="DOI" />
 			</div>
 		</div>
 	</div>
@@ -185,15 +206,6 @@
 </div>
 <h3 class="other">+ Other Elements</h3>
 <div id="other" class="form other hidden">
-	<div class="section">
-		<span class="tag-group-label">Language:</span>
-		<div class="tag-group">
-			<div title="language" class="tag">
-				<input class="full-width input-field tag-value" type="text" placeholder="[LANGUAGE]" title="language" value="" />
-			</div>
-		</div>
-	</div>
-	<span class="divider">&nbsp;</span>
 	<div title="alternateIdentifiers" class="section wrapper-tag">
 		<span class="tag-group-label">Alternate Identifier(s):</span>
 		<button type="button" class="add group">+</button>
