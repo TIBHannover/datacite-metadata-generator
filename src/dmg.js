@@ -1,7 +1,4 @@
 $(document).ready(function() {
-  var kernelVersion = "2.2";
-  var kernelNamespace = "http://www.tib.eu/ext/knm/NTM-Metadata-Schema_v_2.2.xsd";
-  var kernelSchema = "NTM-Metadata-Schema_v_2.2.xsd";
   var kernelSchemaLocation = kernelNamespace + " " + kernelSchema;
   var header = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>" + br() + "<resource xmlns=\"" + kernelNamespace + "\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:schemaLocation=\"" + kernelSchemaLocation + "\">" + br();
   $("select[title]").each(function(){
@@ -97,19 +94,6 @@ $(document).ready(function() {
     }
   });
 });
-
-var optionValues = {};
-optionValues["descriptionType"] = ["Abstract", "TechnicalRemarks"];
-optionValues["resourceType"] = ["Audio", "Audiovisual", "Collection", "Dataset", "Event", "Image", "InteractiveResource", "Model", "PhysicalObject", "Service", "Software"];
-optionValues["titleType"] = ["AlternativeTitle", "Subtitle"];
-optionValues["language"] = ["ger", "eng", "qno", "qsw", "alb", "dan", "fre", "grc", "chi", "heb", "ita", "jpn", "kor", "hrv", "dut", "nor", "pol", "por", "rus", "swe", "srp", "slo", "slv", "spa", "cze", "tur", "hun", "mul", "qot", "zxx", "mis"];
-optionValues["videoSubtitleLanguage"] = optionValues.language;
-optionValues["subjectArea"] = ["Architecture", "Arts and Media", "Biology", "Chemistry", "Economics and Social Science", "Environmental Sciences/Ecology", "Ethnology", "Geological Sciences", "History", "Information Science", "Information Technology", "Mathematics", "Medicine", "Physics", "Psychology", "Sports", "Technology/Engineering", "Other"];
-optionValues["genre"] = ["Computer Animation", "Conference", "Experiment", "Interview", "Lecture", "Research Data", "Video Abstract"];
-optionValues["additionalMaterialType"] = ["File", "URL"];
-optionValues["relatedIdentifierType"] = ["ARK", "DOI", "EAN13", "EISSN", "Handle", "ISBN", "ISSN", "ISTC", "LISSN", "LSID", "PMID", "PROBADO", "PURL", "UPC", "URN"];
-optionValues["relationType"] = ["cites", "isCitedBy", "isSupplementedBy", "isSupplementTo"];
-optionValues["linkType"] = ["av_portal", "linkToExternalData", "linkToThumbnail", "flash_lq", "flash_hq"];
 
 function process(section){
 	var isWrapper = $(section).hasClass("wrapper-tag");
