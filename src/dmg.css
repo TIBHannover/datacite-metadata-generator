@@ -44,8 +44,15 @@ div.form {
 }
 div.form div {
     width: 100%;
-    display: inline;    
+    display: inline;
 }
+
+div.form .indent {
+  padding-left: 20px;
+  width: 90%;
+  display: block;
+}
+
 div.tag {
 	margin-bottom: 4px;
 }
