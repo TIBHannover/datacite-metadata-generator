@@ -202,14 +202,17 @@
 	</div>
 	<span class="divider">&nbsp;</span>
 	<div title="descriptions" class="section wrapper-tag">
-		<span class="tag-group-label">Description:</span>
+		<span class="tag-group-label">Abstract</span>
 		<button type="button" class="add group">+</button>
 		<div class="tag-group">
 			<div title="description" class="tag">
-				<input class="full-width input-field tag-value" type="text" placeholder="[DESCRIPTION]" title="description" value="" />
+				<input class="full-width input-field tag-value" type="text" placeholder="[ABSTRACT]" title="description" value="" />
 				<!-- in xsd description is mixed-content with text and <br> allowed. This is not possible to implement with the current form -->
+			<!-- allow only Abstract instead of option list for desciptionType
 				<select class="half-width input-field tag-attribute" title="descriptionType"></select>
-				<select class="half-width input-field tag-attribute" title="language"></select>
+			-->
+				<input class="input-field tag-attribute" type="hidden" title="descriptionType" value="Abstract" />
+				<select class="full-width input-field tag-attribute" title="language"></select>
 				<!-- in xsd @language has just pattern "[a-z]{3}". Controlled vocabulary requested by Team NTM -->
 			</div>
 		</div>
