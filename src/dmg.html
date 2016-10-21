@@ -40,7 +40,11 @@
 		<div class="tag-group">
 			<div title="title" class="tag">
 				<input class="full-width input-field tag-value" type="text" placeholder="[TITLE]" title="title" value="" />
-				<select class="half-width input-field tag-attribute" title="titleType"></select>
+				<select class="half-width input-field tag-attribute" title="titleType">
+					<option>AlternativeTitle</option>
+					<option>Subtitle</option>
+					<option>TranslatedTitle</option>
+				</select>
 			</div>
 		</div>
 	</div>
@@ -104,7 +108,30 @@
 			<div title="contributor" class="tag">
 				<div title="contributorName" class="tag">
 					<input class="half-width input-field tag-value" type="text" placeholder="[CONTRIBUTOR NAME]" title="contributorName" value="" />
-					<select class="half-width input-field tag-attribute" title="contributorType"></select>
+					<select class="half-width input-field tag-attribute" title="contributorType">
+						<option>ContactPerson</option>
+						<option>DataCollector</option>
+						<option>DataCurator</option>
+						<option>DataManager</option>
+						<option>Distributor</option>
+						<option>Editor</option>
+						<option>Funder</option>
+						<option>HostingInstitution</option>
+						<option>Other</option>
+						<option>Producer</option>
+						<option>ProjectLeader</option>
+						<option>ProjectManager</option>
+						<option>ProjectMember</option>
+						<option>RegistrationAgency</option>
+						<option>RegistrationAuthority</option>
+						<option>RelatedPerson</option>
+						<option>Researcher</option>
+						<option>ResearchGroup</option>
+						<option>RightsHolder</option>
+						<option>Sponsor</option>
+						<option>Supervisor</option>
+						<option>WorkPackageLeader</option>
+					</select>
 				</div>
 				<div title="nameIdentifier" class="tag">
 					<input class="half-width input-field tag-value" type="text" placeholder="[NAME IDENTIFIER]" title="nameIdentifier" value="" />
@@ -124,7 +151,17 @@
 		<div class="tag-group">
 			<div title="date" class="tag">
 				<input class="half-width input-field tag-value" type="text" placeholder="[DATE]" title="date" value="" />
-				<select class="half-width input-field tag-attribute" title="dateType"></select>
+				<select class="half-width input-field tag-attribute" title="dateType">
+					<option>Accepted</option>
+					<option>Available</option>
+					<option>Copyrighted</option>
+					<option>Collected</option>
+					<option>Created</option>
+					<option>Issued</option>
+					<option>Submitted</option>
+					<option>Updated</option>
+					<option>Valid</option>
+				</select>
 			</div>
 		</div>
 	</div>
@@ -134,7 +171,22 @@
 		<div class="tag-group">
 			<div title="resourceType" class="tag">
 				<input class="half-width input-field tag-value" type="text" placeholder="[RESOURCE TYPE]" title="resourceType" value="" />
-				<select class="half-width input-field tag-attribute" title="resourceTypeGeneral"></select>
+				<select class="half-width input-field tag-attribute" title="resourceTypeGeneral">
+					<option>Audiovisual</option>
+					<option>Collection</option>
+					<option>Dataset</option>
+					<option>Event</option>
+					<option>Image</option>
+					<option>InteractiveResource</option>
+					<option>Model</option>
+					<option>PhysicalObject</option>
+					<option>Service</option>
+					<option>Software</option>
+					<option>Sound</option>
+					<option>Text</option>
+					<option>Workflow</option>
+					<option>Other</option>
+				</select>
 			</div>
 		</div>
 	</div>
@@ -145,8 +197,52 @@
 		<div class="tag-group">
 			<div title="relatedIdentifier" class="tag">
 				<input class="full-width input-field tag-value" type="text" placeholder="[RELATED IDENTIFIER]" title="relatedIdentifier" value="" />
-				<select class="half-width input-field tag-attribute" title="relatedIdentifierType"></select>
-				<select class="half-width input-field tag-attribute" title="relationType"></select>
+				<select class="half-width input-field tag-attribute" title="relatedIdentifierType">
+					<option>ARK</option>
+					<option>arXiv</option>
+					<option>bibcode</option>
+					<option>DOI</option>
+					<option>EAN13</option>
+					<option>EISSN</option>
+					<option>Handle</option>
+					<option>ISBN</option>
+					<option>ISSN</option>
+					<option>ISTC</option>
+					<option>LISSN</option>
+					<option>LSID</option>
+					<option>PMID</option>
+					<option>PURL</option>
+					<option>UPC</option>
+					<option>URL</option>
+					<option>URN</option>
+				</select>
+				<select class="half-width input-field tag-attribute" title="relationType">
+					<option>IsCitedBy</option>
+					<option>Cites</option>
+					<option>IsSupplementTo</option>
+					<option>IsSupplementedBy</option>
+					<option>IsContinuedBy</option>
+					<option>Continues</option>
+					<option>IsNewVersionOf</option>
+					<option>IsPreviousVersionOf</option>
+					<option>IsPartOf</option>
+					<option>HasPart</option>
+					<option>IsReferencedBy</option>
+					<option>References</option>
+					<option>IsDocumentedBy</option>
+					<option>Documents</option>
+					<option>IsCompiledBy</option>
+					<option>Compiles</option>
+					<option>IsVariantFormOf</option>
+					<option>IsOriginalFormOf</option>
+					<option>IsIdenticalTo</option>
+					<option>HasMetadata</option>
+					<option>IsMetadataFor</option>
+					<option>Reviews</option>
+					<option>IsReviewedBy</option>
+					<option>IsDerivedFrom</option>
+					<option>IsSourceOf</option>
+				</select>
 				<input class="half-width input-field tag-attribute" type="text" placeholder="[METADATA SCHEME]" title="relatedMetadataScheme" value="" />
 				<input class="half-width input-field tag-attribute" type="text" placeholder="[SCHEME TYPE]" title="schemeType" value="" />
 				<input class="full-width input-field tag-attribute" type="text" placeholder="[SCHEME URI]" title="schemeURI" value="" />
@@ -160,7 +256,13 @@
 		<div class="tag-group">
 			<div title="description" class="tag">
 				<input class="half-width input-field tag-value" type="text" placeholder="[DESCRIPTION]" title="description" value="" />
-				<select class="half-width input-field tag-attribute" title="descriptionType"></select>
+				<select class="half-width input-field tag-attribute" title="descriptionType">
+					<option>Abstract</option>
+					<option>Methods</option>
+					<option>SeriesInformation</option>
+					<option>TableOfContents</option>
+					<option>Other</option>
+				</select>
 			</div>
 		</div>
 	</div>

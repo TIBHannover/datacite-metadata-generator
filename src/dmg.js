@@ -4,8 +4,15 @@ $(document).ready(function() {
   var schemaLocation = namespace + " " + schema;
   var header = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>" + br() + "<resource xmlns=\"" + namespace + "\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:schemaLocation=\"" + schemaLocation + "\">" + br();
   $("select[title]").each(function(){
-	 var tagName = name($(this));
-	 ps($(this),optionValues[tagName]);
+    var select = $(this);
+    var label = "";
+    var placeholder = select.attr("placeholder");
+    if (placeholder !== undefined)
+      label = placeholder
+    else
+      label = "[" + name(select) + "]";
+    defaultOption = $("<option>").attr("value", "").text(label);
+    select.prepend(defaultOption).val("");
   });
   $("body").on("keyup", "input", function(event) {
     event.preventDefault();
@@ -97,15 +104,6 @@ $(document).ready(function() {
   });
 });
 
-var optionValues = {};
-optionValues["descriptionType"] = ["Abstract", "Methods", "SeriesInformation", "TableOfContents", "Other"];
-optionValues["relatedIdentifierType"] = ["ARK", "arXiv", "bibcode", "DOI", "EAN13", "EISSN", "Handle", "ISBN", "ISSN", "ISTC", "LISSN", "LSID", "PMID", "PURL", "UPC", "URL", "URN"];
-optionValues["relationType"] = ["IsCitedBy", "Cites", "IsSupplementTo", "IsSupplementedBy", "IsContinuedBy", "Continues", "IsNewVersionOf", "IsPreviousVersionOf", "IsPartOf", "HasPart", "IsReferencedBy", "References", "IsDocumentedBy", "Documents", "IsCompiledBy", "Compiles", "IsVariantFormOf", "IsOriginalFormOf", "IsIdenticalTo", "HasMetadata", "IsMetadataFor", "Reviews", "IsReviewedBy", "IsDerivedFrom", "IsSourceOf"];
-optionValues["resourceTypeGeneral"] = ["Audiovisual", "Collection", "Dataset", "Event", "Image", "InteractiveResource", "Model", "PhysicalObject", "Service", "Software", "Sound", "Text", "Workflow", "Other"];
-optionValues["dateType"] = ["Accepted", "Available", "Copyrighted", "Collected", "Created", "Issued", "Submitted", "Updated", "Valid"];
-optionValues["contributorType"] = ["ContactPerson", "DataCollector", "DataCurator", "DataManager", "Distributor", "Editor", "Funder", "HostingInstitution", "Other", "Producer", "ProjectLeader", "ProjectManager", "ProjectMember", "RegistrationAgency", "RegistrationAuthority", "RelatedPerson", "Researcher", "ResearchGroup", "RightsHolder", "Sponsor", "Supervisor", "WorkPackageLeader"];
-optionValues["titleType"] = ["AlternativeTitle", "Subtitle", "TranslatedTitle"];
-
 function process(section){
 	var isWrapper = $(section).hasClass("wrapper-tag");
 	var indent = 0;
@@ -193,18 +191,6 @@ function selectValue(select){
 
 function name(tag){
 	return $(tag).attr("title");
-}
-
-function ps(s, sarr) {
-  var i = $(s).attr("title");
-  addO(s, "", "[" + i + "]");
-  for (var i = 0;i < sarr.length;i++) {
-    addO(s, sarr[i], sarr[i]);
-  }
-}
-
-function addO(s, v, d) {
-  $(s).append($("<option>").val(v).html(d));
 }
 
 function br() {
