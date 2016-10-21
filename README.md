@@ -31,3 +31,18 @@ To Do:
 - XML and schema validation options.
 - Try to integrate schema documentation to add context to input fields.
 
+Development:
+============
+
+You can rebuild the self-contained html file `datacite-metadata-generator.html` via `gulp`.
+
+Setup:
+------
+
+    npm install
+    npm install -g gulp
+
+Build:
+------
+
+    gulp

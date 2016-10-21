@@ -30,8 +30,8 @@ $(document).ready(function() {
   $("#selectall").bind("click", function(event) {
     event.preventDefault();
     st($("div code").get(0));
-  });  
-  $("button.add.group").bind("click", function(event) {
+  });
+  $("button.add.group").bind("click", function(event, callback) {
     event.preventDefault();
     var d = $(this).parent().find(".tag-group:first").clone();
     $(d).find("input,select").val("");
@@ -41,6 +41,7 @@ $(document).ready(function() {
     });
     $("<button/>", {"class":"delete group", type:"button", text:"-"}).appendTo($(d).find(".tag:first"));
     d.appendTo($(this).parent());
+    if (callback !== null) callback(d);
   });
   
   $("div.section").on("mouseenter mouseleave focusin focusout", "button.delete.group, button.delete.single-tag", function(event){
@@ -52,13 +53,14 @@ $(document).ready(function() {
     $(this).parent().remove();
     $("input").eq(0).keyup();
   });
-  $("body").on("click", " button.add.single-tag", function(event) {
+  $("body").on("click", " button.add.single-tag", function(event, callback) {
     event.preventDefault();
     var c = $(this).parent().clone();
     $(c).find("input,select").val("");
     $(this).before($("<button/>", {"class":"delete single-tag", type:"button", text:"-"}));
     c.appendTo($(this).parent().parent());
     $(this).remove();
+    if (callback !== null) callback(c);
   });
   $("body").on("click", "button.delete.single-tag", function(event) {
     event.preventDefault();
