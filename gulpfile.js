@@ -25,5 +25,5 @@ gulp.task("default", function() {
     .pipe(injectContent(js))
     .pipe(injectContent(css))
     .pipe(rename("datacite_metadata_generator.html"))
-    .pipe(gulp.dest('./'));
+    .pipe(gulp.dest('./dist/'));
 });
