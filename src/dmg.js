@@ -141,7 +141,7 @@ function processTag(tag, indent){
 		value = inputValue(tagValues[0]);
 	}
 
-	$(tag).find(".tag").each(function(){
+	tagChildren.each(function(){
 		xml += processTag(this,indent + 1);
 	});
 
