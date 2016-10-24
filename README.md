@@ -6,7 +6,7 @@ This is a single HTML form which can be used to generate DataCite Metadata Kerne
 How to use:
 ===========
 
-[Live version of the metadata generator](https://cdn.rawgit.com/koelnconcert/datacite-metadata-generator/3.1.1/src/dmg.html)
+[Live version of the metadata generator](https://cdn.rawgit.com/koelnconcert/datacite-metadata-generator/4.0.0/src/dmg.html)
 
 - Download datacite-metadata-generator.html.
 - Open using a browser (Firefox/Chrome/Opera recommended, or IE8+).
