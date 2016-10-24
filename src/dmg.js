@@ -64,7 +64,7 @@ $(document).ready(function() {
     var c = $(this).parent().clone();
     $(c).find("input,select").val("");
     $(this).before($("<button/>", {"class":"delete single-tag", type:"button", text:"-"}));
-    c.appendTo($(this).parent().parent());
+    $(this).parent().after(c);
     $(this).remove();
     if (callback !== null) callback(c);
   });
