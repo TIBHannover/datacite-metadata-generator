@@ -4,6 +4,7 @@
 <!-- modified: 2015-02-04 paluchm - Updated to Kernel 3.1 -->
 <!-- modified: 2015-11-01 paluchm - Fixed HTML validation problems. Modified implementation so that new XML tags can be generated just by adding HTML elements with proper names and classes. -->
 <!-- modified: 2016-01-09 paluchm - Fixed rightsList tag name. -->
+<!-- modified: 2016-10-24 koelnconcert - Updated for Kernel 4.0 -->
 <!-- This form makes use of styles developed by the wet-boew project (https://github.com/wet-boew/wet-boew)  -->
 <!-- Recommended browsers are Firefox or Chrome. Minimum supported IE version is 8 (save feature currently not supported in IE)-->
 <head>
@@ -128,8 +129,9 @@
 		<div class="tag-group">
 			<div title="subject" class="tag">
 				<input class="half-width input-field tag-value" type="text" placeholder="[SUBJECT]" title="subject" value="" />
+				<input class="half-width input-field tag-attribute" type="text" placeholder="[SUBJECT VALUE URI]" title="valueURI" value="" />
 				<input class="half-width input-field tag-attribute" type="text" placeholder="[SUBJECT SCHEME]" title="subjectScheme" value="" />
-				<input class="full-width input-field tag-attribute" type="text" placeholder="[SUBJECT SCHEME URI]" title="schemeURI" value="" />
+				<input class="half-width input-field tag-attribute" type="text" placeholder="[SUBJECT SCHEME URI]" title="schemeURI" value="" />
 			</div>
 		</div>
 	</div>
@@ -184,18 +186,23 @@
 		<div class="tag-group">
 			<div title="fundingReference" class="tag">
 				<div title="funderName" class="tag">
-					<input class="half-width input-field tag-value" type="text" placeholder="[FUNDER NAME]" title="funderName" value="" />
-					<select class="half-width input-field tag-attribute" title="contributorType"></select>
+					<input class="full-width input-field tag-value" type="text" placeholder="[FUNDER NAME]" title="funderName" value="" />
 				</div>
 				<div title="funderIdentifier" class="tag">
 					<input class="half-width input-field tag-value" type="text" placeholder="[FUNDER IDENTIFIER]" title="funderIdentifier" value="" />
-					<input class="half-width input-field tag-attribute" type="text" placeholder="[FUNDER TYPE]" title="funderIdentifierType" value="" />
+					<select class="half-width input-field tag-attribute" title="funderIdentifierType">
+						<option>ISNI</option>
+						<option>GRID</option>
+						<option>Crossref Funder ID</option>
+						<option>Other</option>
+					</select>
 				</div>
 				<div title="awardNumber" class="tag">
 					<input class="half-width input-field tag-value" type="text" placeholder="[AWARD NUMBER]" title="awardNumber" value="" />
+					<input class="half-width input-field tag-attribute" type="text" placeholder="[AWARD URI]" title="awardURI" value="" />
 				</div>
 				<div title="awardTitle" class="tag">
-					<input class="full-width input-field tag-value" type="text" placeholder="[AWARD TITLE" title="awardTitle" value="" />
+					<input class="full-width input-field tag-value" type="text" placeholder="[AWARD TITLE]" title="awardTitle" value="" />
 				</div>
 			</div>
 		</div>
@@ -301,7 +308,6 @@
 	</div>
 	<span class="divider">&nbsp;</span>
 	<div title="geoLocations" class="section wrapper-tag">
-		<!-- der Bug im Bereich "GeoLocation" wurde bereits von Sebastian erkannt und wird gefixt -->
 		<span class="tag-group-label">Geo Location:</span>
 		<button type="button" class="add group">+</button>
 		<div class="tag-group">
@@ -326,6 +332,17 @@
 					</div>
 					<div title="northBoundLatitude" class="tag">
 						<input class="half-width input-field tag-value" type="text" placeholder="[northBoundLatitude]" title="northBoundLatitude" value="" />
+					</div>
+				</div>
+				<div title="geoLocationPolygon" class="tag">
+					<div title="polygonPoint" class="tag">
+						<div title="pointLongitude" class="tag">
+							<input class="half-width input-field tag-value" type="text" placeholder="[POLYGON POINT LONGITUDE]" title="pointLongitude" value="" />
+						</div>
+						<div title="pointLatitude" class="tag">
+							<input class="half-width input-field tag-value" type="text" placeholder="[POLYGON POINT LATITUDE]" title="pointLatitude" value="" />
+						</div>
+						<button type="button" class="add single-tag">+</button>
 					</div>
 				</div>
 				<div title="geoLocationPlace" class="tag">
