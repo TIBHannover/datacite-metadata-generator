@@ -135,8 +135,12 @@ function processTag(tag, indent){
 	var tagName = name(tag);
 	var attr = attribs(tag);
 
-	var tagValues = $(tag).children(".tag-value");
-	var tagChildren = $(tag).children(".tag");
+	var tagValuesNoColumns = $(tag).children(".tag-value");
+	var tagValuesInColumns = $(tag).children("[class*='col-']").children(".tag-value");
+  var tagValues = $.merge(tagValuesNoColumns, tagValuesInColumns);
+	var tagChildrenNoColumns = $(tag).children(".tag");
+	var tagChildrenInColumns = $(tag).children("[class*='col-']").children(".tag");
+  var tagChildren = $.merge(tagChildrenNoColumns, tagChildrenInColumns);
 
 	if ($(tagValues).length){
 		value = inputValue(tagValues[0]);
@@ -159,7 +163,10 @@ function processTag(tag, indent){
 function attribs(element){
 	var attribs = "";
 
-	$(element).children(".tag-attribute").each(function(){
+  var attributesNoColumns = $(element).children(".tag-attribute");
+  var attributesInColumns = $(element).children("[class*='col-']").children(".tag-attribute");
+
+	$.merge(attributesInColumns,attributesNoColumns).each(function(){
 		var value = "";
 		var n = name(this);
 
