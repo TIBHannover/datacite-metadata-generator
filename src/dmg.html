@@ -31,11 +31,11 @@
 <h3 class="mandatory">Mandatory Elements</h3>
 <div class="form mandatory">
 	<div class="section">
+		<label>DOI:</label>
 		<div class="tag-group">
 			<div title="identifier" class="tag form-group">
-				<label>DOI:</label>
 				<input class="form-control input-field full-width tag-value" type="text" placeholder="[DOI]" title="identifier" value="" />
-				<input class="input-field tag-attribute" type="hidden" title="identifierType" value="DOI" />
+				<input class="form-control input-field tag-attribute" type="hidden" title="identifierType" value="DOI" />
 			</div>
 		</div>
 	</div>
@@ -46,14 +46,18 @@
 			<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
 		</button>
 		<div class="tag-group">
-			<div title="title" class="tag">
-				<input class="full-width input-field tag-value" type="text" placeholder="[TITLE]" title="title" value="" />
-				<select class="half-width input-field tag-attribute" title="titleType">
+			<div title="title" class="tag row">
+				<div class="col-md-6">
+					<input class="form-control full-width input-field tag-value" type="text" placeholder="[TITLE]" title="title" value="" />
+				</div>
+				<div class="col-md-6">
+				<select class="form-control half-width input-field tag-attribute" title="titleType">
 					<option>AlternativeTitle</option>
 					<option>Subtitle</option>
 					<option>TranslatedTitle</option>
 					<option>Other</option>
 				</select>
+				</div>
 			</div>
 		</div>
 	</div>
@@ -66,24 +70,24 @@
 		<div class="tag-group">
 			<div title="creator" class="tag">
 				<div title="creatorName" class="tag">
-					<input class="full-width input-field tag-value" type="text" placeholder="[CREATOR NAME]" title="creatorName" value="" />
+					<input class="form-control full-width input-field tag-value" type="text" placeholder="[CREATOR NAME]" title="creatorName" value="" />
 				</div>
 				<div title="givenName" class="tag">
-					<input class="full-width input-field tag-value" type="text" placeholder="[GIVEN NAME OPTIONAL]" title="givenName" value="" />
+					<input class="form-control full-width input-field tag-value" type="text" placeholder="[GIVEN NAME OPTIONAL]" title="givenName" value="" />
 				</div>
 				<div title="familyName" class="tag">
-					<input class="full-width input-field tag-value" type="text" placeholder="[FAMILY NAME OPTIONAL]" title="familyName" value="" />
+					<input class="form-control full-width input-field tag-value" type="text" placeholder="[FAMILY NAME OPTIONAL]" title="familyName" value="" />
 				</div>
 				<div title="nameIdentifier" class="tag">
-					<input class="half-width input-field tag-value" type="text" placeholder="[NAME IDENTIFIER]" title="nameIdentifier" value="" />
-					<input class="half-width input-field tag-attribute" type="text" placeholder="[NAME ID SCHEME]" title="nameIdentifierScheme" value="" />
-					<input class="full-width input-field tag-attribute" type="text" placeholder="[IDENTIFIER SCHEME URI]" title="schemeURI" value="" />
+					<input class="form-control half-width input-field tag-value" type="text" placeholder="[NAME IDENTIFIER]" title="nameIdentifier" value="" />
+					<input class="form-control half-width input-field tag-attribute" type="text" placeholder="[NAME ID SCHEME]" title="nameIdentifierScheme" value="" />
+					<input class="form-control full-width input-field tag-attribute" type="text" placeholder="[IDENTIFIER SCHEME URI]" title="schemeURI" value="" />
 					<button type="button" class="btn btn-default btn-xs add single-tag">
 						<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
 					</button>
 				</div>
 				<div title="affiliation" class="tag">
-					<input class="unbounded-width input-field tag-value" type="text" placeholder="[CREATOR AFFILIATION]" title="affiliation" value="" />
+					<input class="form-control unbounded-width input-field tag-value" type="text" placeholder="[CREATOR AFFILIATION]" title="affiliation" value="" />
 					<button type="button" class="btn btn-default btn-xs add single-tag">
 						<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
 					</button>
@@ -96,7 +100,7 @@
 		<label>Publisher:</label>
 		<div class="tag-group">
 			<div title="publisher" class="tag">
-				<input type="text" class="full-width input-field tag-value" placeholder="[PUBLISHER]" title="publisher" value="" />
+				<input class="form-control full-width input-field tag-value" type="text" placeholder="[PUBLISHER]" title="publisher" value="" />
 			</div>
 		</div>
 	</div>
@@ -104,8 +108,8 @@
 		<label>Resource Type:</label>
 		<div class="tag-group">
 			<div title="resourceType" class="tag">
-				<input class="half-width input-field tag-value" type="text" placeholder="[RESOURCE TYPE]" title="resourceType" value="" />
-				<select class="half-width input-field tag-attribute" title="resourceTypeGeneral">
+				<input class="form-control half-width input-field tag-value" type="text" placeholder="[RESOURCE TYPE]" title="resourceType" value="" />
+				<select class="form-control half-width input-field tag-attribute" title="resourceTypeGeneral">
 					<option>Audiovisual</option>
 					<option>Collection</option>
 					<option>Dataset</option>
@@ -143,10 +147,10 @@
 		</button>
 		<div class="tag-group">
 			<div title="subject" class="tag">
-				<input class="half-width input-field tag-value" type="text" placeholder="[SUBJECT]" title="subject" value="" />
-				<input class="half-width input-field tag-attribute" type="text" placeholder="[SUBJECT VALUE URI]" title="valueURI" value="" />
-				<input class="half-width input-field tag-attribute" type="text" placeholder="[SUBJECT SCHEME]" title="subjectScheme" value="" />
-				<input class="half-width input-field tag-attribute" type="text" placeholder="[SUBJECT SCHEME URI]" title="schemeURI" value="" />
+				<input class="form-control half-width input-field tag-value" type="text" placeholder="[SUBJECT]" title="subject" value="" />
+				<input class="form-control half-width input-field tag-attribute" type="text" placeholder="[SUBJECT VALUE URI]" title="valueURI" value="" />
+				<input class="form-control half-width input-field tag-attribute" type="text" placeholder="[SUBJECT SCHEME]" title="subjectScheme" value="" />
+				<input class="form-control half-width input-field tag-attribute" type="text" placeholder="[SUBJECT SCHEME URI]" title="schemeURI" value="" />
 			</div>
 		</div>
 	</div>
@@ -159,9 +163,9 @@
 		<div class="tag-group">
 			<div title="contributor" class="tag">
 				<div title="contributorName" class="tag">
-					<input class="half-width input-field tag-value" type="text" placeholder="[CONTRIBUTOR NAME]" title="contributorName" value="" />
+					<input class="form-control half-width input-field tag-value" type="text" placeholder="[CONTRIBUTOR NAME]" title="contributorName" value="" />
 				</div>
-				<select class="half-width input-field tag-attribute" title="contributorType">
+				<select class="form-control half-width input-field tag-attribute" title="contributorType">
 					<option>ContactPerson</option>
 					<option>DataCollector</option>
 					<option>DataCurator</option>
@@ -186,15 +190,15 @@
 					<option>WorkPackageLeader</option>
 				</select>
 				<div title="nameIdentifier" class="tag">
-					<input class="half-width input-field tag-value" type="text" placeholder="[NAME IDENTIFIER]" title="nameIdentifier" value="" />
-					<input class="half-width input-field tag-attribute" type="text" placeholder="[NAME ID SCHEME]" title="nameIdentifierScheme" value="" />
-					<input class="full-width input-field tag-attribute" type="text" placeholder="[IDENTIFIER SCHEME URI]" title="schemeURI" value="" />
+					<input class="form-control half-width input-field tag-value" type="text" placeholder="[NAME IDENTIFIER]" title="nameIdentifier" value="" />
+					<input class="form-control half-width input-field tag-attribute" type="text" placeholder="[NAME ID SCHEME]" title="nameIdentifierScheme" value="" />
+					<input class="form-control full-width input-field tag-attribute" type="text" placeholder="[IDENTIFIER SCHEME URI]" title="schemeURI" value="" />
 					<button type="button" class="btn btn-default btn-xs add single-tag">
 						<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
 					</button>
 				</div>
 				<div title="affiliation" class="tag">
-					<input class="unbounded-width input-field tag-value" type="text" placeholder="[CONTRIBUTOR AFFILIATION]" title="affiliation" value="" />
+					<input class="form-control unbounded-width input-field tag-value" type="text" placeholder="[CONTRIBUTOR AFFILIATION]" title="affiliation" value="" />
 					<button type="button" class="btn btn-default btn-xs add single-tag">
 						<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
 					</button>
@@ -210,11 +214,11 @@
 		<div class="tag-group">
 			<div title="fundingReference" class="tag">
 				<div title="funderName" class="tag">
-					<input class="full-width input-field tag-value" type="text" placeholder="[FUNDER NAME]" title="funderName" value="" />
+					<input class="form-control full-width input-field tag-value" type="text" placeholder="[FUNDER NAME]" title="funderName" value="" />
 				</div>
 				<div title="funderIdentifier" class="tag">
-					<input class="half-width input-field tag-value" type="text" placeholder="[FUNDER IDENTIFIER]" title="funderIdentifier" value="" />
-					<select class="half-width input-field tag-attribute" title="funderIdentifierType">
+					<input class="form-control half-width input-field tag-value" type="text" placeholder="[FUNDER IDENTIFIER]" title="funderIdentifier" value="" />
+					<select class="form-control half-width input-field tag-attribute" title="funderIdentifierType">
 						<option>ISNI</option>
 						<option>GRID</option>
 						<option>Crossref Funder ID</option>
@@ -222,11 +226,11 @@
 					</select>
 				</div>
 				<div title="awardNumber" class="tag">
-					<input class="half-width input-field tag-value" type="text" placeholder="[AWARD NUMBER]" title="awardNumber" value="" />
-					<input class="half-width input-field tag-attribute" type="text" placeholder="[AWARD URI]" title="awardURI" value="" />
+					<input class="form-control half-width input-field tag-value" type="text" placeholder="[AWARD NUMBER]" title="awardNumber" value="" />
+					<input class="form-control half-width input-field tag-attribute" type="text" placeholder="[AWARD URI]" title="awardURI" value="" />
 				</div>
 				<div title="awardTitle" class="tag">
-					<input class="full-width input-field tag-value" type="text" placeholder="[AWARD TITLE]" title="awardTitle" value="" />
+					<input class="form-control full-width input-field tag-value" type="text" placeholder="[AWARD TITLE]" title="awardTitle" value="" />
 				</div>
 			</div>
 		</div>
@@ -239,8 +243,8 @@
 		</button>
 		<div class="tag-group">
 			<div title="date" class="tag">
-				<input class="half-width input-field tag-value" type="text" placeholder="[DATE]" title="date" value="" />
-				<select class="half-width input-field tag-attribute" title="dateType">
+				<input class="form-control half-width input-field tag-value" type="text" placeholder="[DATE]" title="date" value="" />
+				<select class="form-control half-width input-field tag-attribute" title="dateType">
 					<option>Accepted</option>
 					<option>Available</option>
 					<option>Copyrighted</option>
@@ -262,8 +266,8 @@
 		</button>
 		<div class="tag-group">
 			<div title="relatedIdentifier" class="tag">
-				<input class="full-width input-field tag-value" type="text" placeholder="[RELATED IDENTIFIER]" title="relatedIdentifier" value="" />
-				<select class="half-width input-field tag-attribute" title="relatedIdentifierType">
+				<input class="form-control full-width input-field tag-value" type="text" placeholder="[RELATED IDENTIFIER]" title="relatedIdentifier" value="" />
+				<select class="form-control half-width input-field tag-attribute" title="relatedIdentifierType">
 					<option>ARK</option>
 					<option>arXiv</option>
 					<option>bibcode</option>
@@ -283,7 +287,7 @@
 					<option>URL</option>
 					<option>URN</option>
 				</select>
-				<select class="half-width input-field tag-attribute" title="relationType">
+				<select class="form-control half-width input-field tag-attribute" title="relationType">
 					<option>IsCitedBy</option>
 					<option>Cites</option>
 					<option>IsSupplementTo</option>
@@ -310,9 +314,9 @@
 					<option>IsDerivedFrom</option>
 					<option>IsSourceOf</option>
 				</select>
-				<input class="half-width input-field tag-attribute" type="text" placeholder="[METADATA SCHEME]" title="relatedMetadataScheme" value="" />
-				<input class="half-width input-field tag-attribute" type="text" placeholder="[SCHEME TYPE]" title="schemeType" value="" />
-				<input class="full-width input-field tag-attribute" type="text" placeholder="[SCHEME URI]" title="schemeURI" value="" />
+				<input class="form-control half-width input-field tag-attribute" type="text" placeholder="[METADATA SCHEME]" title="relatedMetadataScheme" value="" />
+				<input class="form-control half-width input-field tag-attribute" type="text" placeholder="[SCHEME TYPE]" title="schemeType" value="" />
+				<input class="form-control full-width input-field tag-attribute" type="text" placeholder="[SCHEME URI]" title="schemeURI" value="" />
 			</div>
 		</div>
 	</div>
@@ -324,8 +328,8 @@
 		</button>
 		<div class="tag-group">
 			<div title="description" class="tag">
-				<input class="half-width input-field tag-value" type="text" placeholder="[DESCRIPTION]" title="description" value="" />
-				<select class="half-width input-field tag-attribute" title="descriptionType">
+				<input class="form-control half-width input-field tag-value" type="text" placeholder="[DESCRIPTION]" title="description" value="" />
+				<select class="form-control half-width input-field tag-attribute" title="descriptionType">
 					<option>Abstract</option>
 					<option>Methods</option>
 					<option>SeriesInformation</option>
@@ -346,33 +350,33 @@
 			<div title="geoLocation" class="tag">
 				<div title="geoLocationPoint" class="tag">
 					<div title="pointLongitude" class="tag">
-						<input class="half-width input-field tag-value" type="text" placeholder="[POINT LONGITUDE]" title="pointLongitude" value="" />
+						<input class="form-control half-width input-field tag-value" type="text" placeholder="[POINT LONGITUDE]" title="pointLongitude" value="" />
 					</div>
 					<div title="pointLatitude" class="tag">
-						<input class="half-width input-field tag-value" type="text" placeholder="[POINT LATITUDE]" title="pointLatitude" value="" />
+						<input class="form-control half-width input-field tag-value" type="text" placeholder="[POINT LATITUDE]" title="pointLatitude" value="" />
 					</div>
 				</div>
 				<div title="geoLocationBox" class="tag">
 					<div title="westBoundLongitude" class="tag">
-						<input class="half-width input-field tag-value" type="text" placeholder="[westBoundLongitude]" title="westBoundLongitude" value="" />
+						<input class="form-control half-width input-field tag-value" type="text" placeholder="[westBoundLongitude]" title="westBoundLongitude" value="" />
 					</div>
 					<div title="eastBoundLongitude" class="tag">
-						<input class="half-width input-field tag-value" type="text" placeholder="[eastBoundLongitude]" title="eastBoundLongitude" value="" />
+						<input class="form-control half-width input-field tag-value" type="text" placeholder="[eastBoundLongitude]" title="eastBoundLongitude" value="" />
 					</div>
 					<div title="southBoundLatitude" class="tag">
-						<input class="half-width input-field tag-value" type="text" placeholder="[southBoundLatitude]" title="southBoundLatitude" value="" />
+						<input class="form-control half-width input-field tag-value" type="text" placeholder="[southBoundLatitude]" title="southBoundLatitude" value="" />
 					</div>
 					<div title="northBoundLatitude" class="tag">
-						<input class="half-width input-field tag-value" type="text" placeholder="[northBoundLatitude]" title="northBoundLatitude" value="" />
+						<input class="form-control half-width input-field tag-value" type="text" placeholder="[northBoundLatitude]" title="northBoundLatitude" value="" />
 					</div>
 				</div>
 				<div title="geoLocationPolygon" class="tag">
 					<div title="polygonPoint" class="tag">
 						<div title="pointLongitude" class="tag">
-							<input class="half-width input-field tag-value" type="text" placeholder="[POLYGON POINT LONGITUDE]" title="pointLongitude" value="" />
+							<input class="form-control half-width input-field tag-value" type="text" placeholder="[POLYGON POINT LONGITUDE]" title="pointLongitude" value="" />
 						</div>
 						<div title="pointLatitude" class="tag">
-							<input class="half-width input-field tag-value" type="text" placeholder="[POLYGON POINT LATITUDE]" title="pointLatitude" value="" />
+							<input class="form-control half-width input-field tag-value" type="text" placeholder="[POLYGON POINT LATITUDE]" title="pointLatitude" value="" />
 						</div>
 						<button type="button" class="btn btn-default btn-xs add single-tag">
 							<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
@@ -380,7 +384,7 @@
 					</div>
 				</div>
 				<div title="geoLocationPlace" class="tag">
-					<input class="full-width input-field tag-value" type="text" placeholder="[GEO LOCATION PLACE]" title="geoLocationPlace" value="" />
+					<input class="form-control full-width input-field tag-value" type="text" placeholder="[GEO LOCATION PLACE]" title="geoLocationPlace" value="" />
 				</div>
 			</div>
 		</div>
@@ -392,7 +396,7 @@
 		<label>Language:</label>
 		<div class="tag-group">
 			<div title="language" class="tag">
-				<input class="full-width input-field tag-value" type="text" placeholder="[LANGUAGE]" title="language" value="" />
+				<input class="form-control full-width input-field tag-value" type="text" placeholder="[LANGUAGE]" title="language" value="" />
 			</div>
 		</div>
 	</div>
@@ -404,8 +408,8 @@
 		</button>
 		<div class="tag-group">
 			<div title="alternateIdentifier" class="tag">
-				<input class="half-width input-field tag-value" type="text" placeholder="[ALTERNATE IDENTIFIER]" title="alternateIdentifier" value="" />
-				<input class="half-width input-field tag-attribute" type="text" placeholder="[ALTERNATE ID TYPE]" title="alternateIdentifierType" value="" />
+				<input class="form-control half-width input-field tag-value" type="text" placeholder="[ALTERNATE IDENTIFIER]" title="alternateIdentifier" value="" />
+				<input class="form-control half-width input-field tag-attribute" type="text" placeholder="[ALTERNATE ID TYPE]" title="alternateIdentifierType" value="" />
 			</div>
 		</div>
 	</div>
@@ -417,7 +421,7 @@
 		</button>
 		<div class="tag-group">
 			<div title="size" class="tag">
-				<input class="full-width input-field tag-value" type="text" placeholder="[SIZE]" title="size" value="" />
+				<input class="form-control full-width input-field tag-value" type="text" placeholder="[SIZE]" title="size" value="" />
 			</div>
 		</div>
 	</div>
@@ -429,7 +433,7 @@
 		</button>
 		<div class="tag-group">
 			<div title="format" class="tag">
-				<input class="full-width input-field tag-value" type="text" placeholder="[FORMAT]" title="format" value="" />
+				<input class="form-control full-width input-field tag-value" type="text" placeholder="[FORMAT]" title="format" value="" />
 			</div>
 		</div>
 	</div>
@@ -438,7 +442,7 @@
 		<label>Version:</label>
 		<div class="tag-group">
 			<div title="version" class="tag">
-				<input class="full-width input-field tag-value" type="text" placeholder="[VERSION]" title="version" value="" />
+				<input class="form-control full-width input-field tag-value" type="text" placeholder="[VERSION]" title="version" value="" />
 			</div>
 		</div>
 	</div>
@@ -450,8 +454,8 @@
 		</button>
 		<div class="tag-group">
 			<div title="rights" class="tag">
-				<input class="full-width input-field tag-value" type="text" placeholder="[RIGHTS]" title="rights" value="" />
-				<input class="full-width input-field tag-attribute" type="text" placeholder="[RIGHTS URI]" title="rightsURI" value="" />
+				<input class="form-control full-width input-field tag-value" type="text" placeholder="[RIGHTS]" title="rights" value="" />
+				<input class="form-control full-width input-field tag-attribute" type="text" placeholder="[RIGHTS URI]" title="rightsURI" value="" />
 			</div>
 		</div>
 	</div>
