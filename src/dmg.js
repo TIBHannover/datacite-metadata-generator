@@ -45,7 +45,8 @@ $(document).ready(function() {
       $(this).prev("input").remove();
       $(this).remove();
     });
-    $("<button/>", {"class":"delete group", type:"button", text:"-"}).appendTo($(d).find(".tag:first"));
+    var icon = $("<span>", {class:"glyphicon glyphicon-remove", "aria-hidden":"true"})
+    $("<button/>", {"class":"btn btn-default btn-xs delete group", type:"button"}).append(icon).appendTo($(d).find(".tag:first"));
     d.appendTo($(this).parent());
     if (callback !== null) callback(d);
   });
