@@ -14,15 +14,20 @@
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 <script type="text/javascript" src="dmg.js"></script>
 <script type="text/javascript" src="load.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 <!-- endinject -->
 <!-- inject:css -->
-<link rel="stylesheet" href="dmg.css" />
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 <!-- endinject -->
 <!--[if IE]><script>function save(){alert("Not currently supported in Internet Explorer");}</script><![endif]-->
 </head>
-<body data-namespace="http://datacite.org/schema/kernel-4" data-schema="http://schema.datacite.org/meta/kernel-4/metadata.xsd">
-<h2 class="pagetitle">DataCite Metadata Generator - Kernel 4.0</h2>
-<div class="left">
+<body data-namespace="http://datacite.org/schema/kernel-4" data-schema="http://schema.datacite.org/meta/kernel-4/metadata.xsd"
+	class="container-fluid">
+<div class="page-header">
+	<h1>DataCite Metadata Generator <small>Kernel 4.0</small></h1>
+</div>
+<div class="row">
+<div class="col-md-6">
 <h3 class="mandatory">Mandatory Elements</h3>
 <div class="form mandatory">
 	<div class="section">
@@ -37,7 +42,9 @@
 	<span class="divider">&nbsp;</span>
 	<div title="titles" class="section wrapper-tag">
 		<span class="tag-group-label">Title(s):</span>
-		<button type="button" class="add group">+</button>
+		<button type="button" class="btn btn-default btn-xs add group">
+			<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+		</button>
 		<div class="tag-group">
 			<div title="title" class="tag">
 				<input class="full-width input-field tag-value" type="text" placeholder="[TITLE]" title="title" value="" />
@@ -53,7 +60,9 @@
 	<span class="divider">&nbsp;</span>
 	<div title="creators" class="section wrapper-tag">
 		<span class="tag-group-label">Creator(s):</span>
-		<button type="button" class="add group">+</button>
+		<button type="button" class="btn btn-default btn-xs add group">
+			<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+		</button>
 		<div class="tag-group">
 			<div title="creator" class="tag">
 				<div title="creatorName" class="tag">
@@ -69,11 +78,15 @@
 					<input class="half-width input-field tag-value" type="text" placeholder="[NAME IDENTIFIER]" title="nameIdentifier" value="" />
 					<input class="half-width input-field tag-attribute" type="text" placeholder="[NAME ID SCHEME]" title="nameIdentifierScheme" value="" />
 					<input class="full-width input-field tag-attribute" type="text" placeholder="[IDENTIFIER SCHEME URI]" title="schemeURI" value="" />
-					<button type="button" class="add single-tag">+</button>
+					<button type="button" class="btn btn-default btn-xs add single-tag">
+						<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+					</button>
 				</div>
 				<div title="affiliation" class="tag">
 					<input class="unbounded-width input-field tag-value" type="text" placeholder="[CREATOR AFFILIATION]" title="affiliation" value="" />
-					<button type="button" class="add single-tag">+</button>
+					<button type="button" class="btn btn-default btn-xs add single-tag">
+						<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+					</button>
 				</div>
 			</div>
 		</div>
@@ -125,7 +138,9 @@
 <div id="recommended" class="form recommended hidden">
 	<div title="subjects" class="section wrapper-tag">
 		<span class="tag-group-label">Subject(s):</span>
-		<button type="button" class="add group">+</button>
+		<button type="button" class="btn btn-default btn-xs add group">
+			<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+		</button>
 		<div class="tag-group">
 			<div title="subject" class="tag">
 				<input class="half-width input-field tag-value" type="text" placeholder="[SUBJECT]" title="subject" value="" />
@@ -138,7 +153,9 @@
 	<span class="divider">&nbsp;</span>
 	<div title="contributors" class="section wrapper-tag">
 		<span class="tag-group-label">Contributor(s):</span>
-		<button type="button" class="add group">+</button>
+		<button type="button" class="btn btn-default btn-xs add group">
+			<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+		</button>
 		<div class="tag-group">
 			<div title="contributor" class="tag">
 				<div title="contributorName" class="tag">
@@ -172,17 +189,24 @@
 					<input class="half-width input-field tag-value" type="text" placeholder="[NAME IDENTIFIER]" title="nameIdentifier" value="" />
 					<input class="half-width input-field tag-attribute" type="text" placeholder="[NAME ID SCHEME]" title="nameIdentifierScheme" value="" />
 					<input class="full-width input-field tag-attribute" type="text" placeholder="[IDENTIFIER SCHEME URI]" title="schemeURI" value="" />
-					<button type="button" class="add single-tag">+</button>
+					<button type="button" class="btn btn-default btn-xs add single-tag">
+						<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+					</button>
 				</div>
 				<div title="affiliation" class="tag">
-					<input class="unbounded-width input-field tag-value" type="text" placeholder="[CONTRIBUTOR AFFILIATION]" title="affiliation" value="" /><button type="button" class="add single-tag">+</button>
+					<input class="unbounded-width input-field tag-value" type="text" placeholder="[CONTRIBUTOR AFFILIATION]" title="affiliation" value="" />
+					<button type="button" class="btn btn-default btn-xs add single-tag">
+						<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+					</button>
 				</div>
 			</div>
 		</div>
 	</div>
 	<div title="fundingReferences" class="section wrapper-tag">
 		<span class="tag-group-label">Funder(s):</span>
-		<button type="button" class="add group">+</button>
+		<button type="button" class="btn btn-default btn-xs add group">
+			<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+		</button>
 		<div class="tag-group">
 			<div title="fundingReference" class="tag">
 				<div title="funderName" class="tag">
@@ -210,7 +234,9 @@
 	<span class="divider">&nbsp;</span>
 	<div title="dates" class="section wrapper-tag">
 		<span class="tag-group-label">Date(s):</span>
-		<button type="button" class="add group">+</button>
+		<button type="button" class="btn btn-default btn-xs add group">
+			<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+		</button>
 		<div class="tag-group">
 			<div title="date" class="tag">
 				<input class="half-width input-field tag-value" type="text" placeholder="[DATE]" title="date" value="" />
@@ -231,7 +257,9 @@
 	<span class="divider">&nbsp;</span>
 <div title="relatedIdentifiers" class="section wrapper-tag">
 		<span class="tag-group-label">Related Identifier(s):</span>
-		<button type="button" class="add group">+</button>
+		<button type="button" class="btn btn-default btn-xs add group">
+			<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+		</button>
 		<div class="tag-group">
 			<div title="relatedIdentifier" class="tag">
 				<input class="full-width input-field tag-value" type="text" placeholder="[RELATED IDENTIFIER]" title="relatedIdentifier" value="" />
@@ -291,7 +319,9 @@
 	<span class="divider">&nbsp;</span>
 	<div title="descriptions" class="section wrapper-tag">
 		<span class="tag-group-label">Description:</span>
-		<button type="button" class="add group">+</button>
+		<button type="button" class="btn btn-default btn-xs add group">
+			<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+		</button>
 		<div class="tag-group">
 			<div title="description" class="tag">
 				<input class="half-width input-field tag-value" type="text" placeholder="[DESCRIPTION]" title="description" value="" />
@@ -309,7 +339,9 @@
 	<span class="divider">&nbsp;</span>
 	<div title="geoLocations" class="section wrapper-tag">
 		<span class="tag-group-label">Geo Location:</span>
-		<button type="button" class="add group">+</button>
+		<button type="button" class="btn btn-default btn-xs add group">
+			<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+		</button>
 		<div class="tag-group">
 			<div title="geoLocation" class="tag">
 				<div title="geoLocationPoint" class="tag">
@@ -342,7 +374,9 @@
 						<div title="pointLatitude" class="tag">
 							<input class="half-width input-field tag-value" type="text" placeholder="[POLYGON POINT LATITUDE]" title="pointLatitude" value="" />
 						</div>
-						<button type="button" class="add single-tag">+</button>
+						<button type="button" class="btn btn-default btn-xs add single-tag">
+							<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+						</button>
 					</div>
 				</div>
 				<div title="geoLocationPlace" class="tag">
@@ -365,7 +399,9 @@
 	<span class="divider">&nbsp;</span>
 	<div title="alternateIdentifiers" class="section wrapper-tag">
 		<span class="tag-group-label">Alternate Identifier(s):</span>
-		<button type="button" class="add group">+</button>
+		<button type="button" class="btn btn-default btn-xs add group">
+			<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+		</button>
 		<div class="tag-group">
 			<div title="alternateIdentifier" class="tag">
 				<input class="half-width input-field tag-value" type="text" placeholder="[ALTERNATE IDENTIFIER]" title="alternateIdentifier" value="" />
@@ -376,7 +412,9 @@
 	<span class="divider">&nbsp;</span>
 	<div title="sizes" class="section wrapper-tag">
 		<span class="tag-group-label">Size(s):</span>
-		<button type="button" class="add group">+</button>
+		<button type="button" class="btn btn-default btn-xs add group">
+			<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+		</button>
 		<div class="tag-group">
 			<div title="size" class="tag">
 				<input class="full-width input-field tag-value" type="text" placeholder="[SIZE]" title="size" value="" />
@@ -386,7 +424,9 @@
 	<span class="divider">&nbsp;</span>
 	<div title="formats" class="section wrapper-tag">
 		<span class="tag-group-label">Format(s):</span>
-		<button type="button" class="add group">+</button>
+		<button type="button" class="btn btn-default btn-xs add group">
+			<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+		</button>
 		<div class="tag-group">
 			<div title="format" class="tag">
 				<input class="full-width input-field tag-value" type="text" placeholder="[FORMAT]" title="format" value="" />
@@ -405,7 +445,9 @@
 	<span class="divider">&nbsp;</span>
 	<div title="rightsList" class="section wrapper-tag">
 		<span class="tag-group-label">Rights List:</span>
-		<button type="button" class="add group">+</button>
+		<button type="button" class="btn btn-default btn-xs add group">
+			<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+		</button>
 		<div class="tag-group">
 			<div title="rights" class="tag">
 				<input class="full-width input-field tag-value" type="text" placeholder="[RIGHTS]" title="rights" value="" />
@@ -419,16 +461,17 @@ Load xml file: <input id="loadfile" type="file"/>
 <pre id="log">
 </pre>
 </div>
-<div class="right hidden">
+<div class="col-md-6 right">
 <h3 class="results">Metadata</h3>
 <div class="form results">
 <pre><code style="display:inline-block;"></code></pre>
 </div>
 <br />
-<button type="button" id="download" onclick="save()">Ready to Save</button>
-<button type="button" id="reset">Reset</button>
-<button type="button" id="selectall">Select All</button>
+<button class="btn btn-primary" type="button" id="download" onclick="save()">Ready to Save</button>
+<button class="btn btn-default" type="button" id="reset">Reset</button>
+<button class="btn btn-default" type="button" id="selectall">Select All</button>
 <span class="output" id="output"></span>
 </div>
+</div> <!--row-->
 </body>
 </html>
