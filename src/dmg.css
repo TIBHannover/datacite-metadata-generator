@@ -75,7 +75,9 @@ select {
 }
 button.add,
 button.delete {
-    width: 1.8em;
+    min-width: 2em;
+    padding: 2px;
+    border: 1px outset;
     font-weight: 400;
     margin-left: 4px;
 }
@@ -87,10 +89,7 @@ button.element {
     margin-left: 5px
 }
 button:hover {
-    background-position: 0 -15px;
-    outline-offset: -6px;
-    text-decoration: none;
-    transition: background-position 0.1s linear 0s
+    background-color: transparent;
 }
 input:focus,
 select:focus {
