@@ -25,10 +25,16 @@ select.half-width {
 .tag-group-label {
     float: left;
     margin-top: 2px;
-    width: 80%
+    width: 80%;
+}
+.tag-label {
+    float: left;
+    margin-top: 2px;
+    width: 80%;
+    font-size: 80%;
 }
 .left {
-	float: left;	
+	float: left;
 }
 .right {
 	float: right;
@@ -44,7 +50,7 @@ div.form {
 }
 div.form div {
     width: 100%;
-    display: inline;    
+    display: inline;
 }
 div.tag {
 	margin-bottom: 4px;
@@ -144,11 +150,11 @@ div.left h3 {
 .remove-highlight select {
     border-color: rgb(239, 6, 6);
     border-style: solid;
-    border-width: 1px;    
+    border-width: 1px;
     border-radius: 5px;
-    -webkit-transition:all 0.1s linear 0s, border-color 0s;    
+    -webkit-transition:all 0.1s linear 0s, border-color 0s;
     transition: all 0.1s linear 0s, border-color 0s;
-    
+
 }
 h3.recommended:hover,
 h3.other:hover,
