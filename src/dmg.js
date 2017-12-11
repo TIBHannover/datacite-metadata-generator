@@ -8,7 +8,7 @@ $(document).ready(function() {
     var label = "";
     var placeholder = select.attr("placeholder");
     if (placeholder !== undefined)
-      label = placeholder
+      label = placeholder;
     else
       label = "[" + name(select) + "]";
     defaultOption = $("<option>").attr("value", "").text(label);
@@ -19,7 +19,7 @@ $(document).ready(function() {
     var xml = header;
     $("div.section").each(function(){
     	xml += process($(this));
-    })
+    });
     xml += ct("resource");
     metadata = xml;
     $("div.right code").text(xml);
@@ -286,4 +286,3 @@ function save() {
     downloadFile();
   }
 }
-;
