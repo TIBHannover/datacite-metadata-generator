@@ -1,25 +1,16 @@
 $(document).ready(function() {
-  var namespace = $("body").data("namespace");
-  var schema = $("body").data("schema");
-  var schemaLocation = namespace + " " + schema;
-  var header = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>" + br() + "<resource xmlns=\"" + namespace + "\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:schemaLocation=\"" + schemaLocation + "\">" + br();
+  var kernelSchemaLocation = kernelNamespace + " " + kernelSchema;
+  var header = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>" + br() + "<resource xmlns=\"" + kernelNamespace + "\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:schemaLocation=\"" + kernelSchemaLocation + "\">" + br();
   $("select[title]").each(function(){
-    var select = $(this);
-    var label = "";
-    var placeholder = select.attr("placeholder");
-    if (placeholder !== undefined)
-      label = placeholder;
-    else
-      label = "[" + name(select) + "]";
-    defaultOption = $("<option>").attr("value", "").text(label);
-    select.prepend(defaultOption).val("");
+	 var tagName = name($(this));
+	 ps($(this),optionValues[tagName]);
   });
   $("body").on("keyup", "input", function(event) {
     event.preventDefault();
     var xml = header;
     $("div.section").each(function(){
     	xml += process($(this));
-    });
+    })
     xml += ct("resource");
     metadata = xml;
     $("div.right code").text(xml);
@@ -64,7 +55,7 @@ $(document).ready(function() {
     var c = $(this).parent().clone();
     $(c).find("input,select").val("");
     $(this).before($("<button/>", {"class":"delete single-tag", type:"button", text:"-"}));
-    $(this).parent().after(c);
+    c.appendTo($(this).parent().parent());
     $(this).remove();
     if (callback !== null) callback(c);
   });
@@ -141,7 +132,7 @@ function processTag(tag, indent){
 		value = inputValue(tagValues[0]);
 	}
 
-	tagChildren.each(function(){
+	$(tag).find(".tag").each(function(){
 		xml += processTag(this,indent + 1);
 	});
 
@@ -191,6 +182,18 @@ function selectValue(select){
 
 function name(tag){
 	return $(tag).attr("title");
+}
+
+function ps(s, sarr) {
+  var i = $(s).attr("title");
+  addO(s, "", "[" + i + "]");
+  for (var i = 0;i < sarr.length;i++) {
+    addO(s, sarr[i], sarr[i]);
+  }
+}
+
+function addO(s, v, d) {
+  $(s).append($("<option>").val(v).html(d));
 }
 
 function br() {
@@ -286,3 +289,4 @@ function save() {
     downloadFile();
   }
 }
+;

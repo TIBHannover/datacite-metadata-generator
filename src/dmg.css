@@ -25,13 +25,7 @@ select.half-width {
 .tag-group-label {
     float: left;
     margin-top: 2px;
-    width: 80%;
-}
-.tag-label {
-    float: left;
-    margin-top: 2px;
-    width: 80%;
-    font-size: 80%;
+    width: 80%
 }
 .left {
 	float: left;
@@ -52,6 +46,13 @@ div.form div {
     width: 100%;
     display: inline;
 }
+
+div.form .indent {
+  padding-left: 20px;
+  width: 90%;
+  display: block;
+}
+
 div.tag {
 	margin-bottom: 4px;
 }
@@ -75,9 +76,7 @@ select {
 }
 button.add,
 button.delete {
-    min-width: 2em;
-    padding: 2px;
-    border: 1px outset;
+    width: 1.8em;
     font-weight: 400;
     margin-left: 4px;
 }
@@ -89,7 +88,10 @@ button.element {
     margin-left: 5px
 }
 button:hover {
-    background-color: transparent;
+    background-position: 0 -15px;
+    outline-offset: -6px;
+    text-decoration: none;
+    transition: background-position 0.1s linear 0s
 }
 input:focus,
 select:focus {
@@ -125,8 +127,8 @@ div.right h3 {
     vertical-align: bottom
 }
 div.left h3 {
-    background-color: #176ca7;
-    background-image: linear-gradient(#176ca7, #135888);
+    background-color: #af1414;
+    background-image: linear-gradient(#d51616, #af1414);
     background-repeat: repeat-x;
     background-size: 100% auto;
     border-collapse: collapse;
@@ -162,7 +164,7 @@ button:hover {
 }
 h1,
 h2 {
-    color: #0084b9
+    color: #c01f25
 }
 span.divider {
     border-bottom: 1px gainsboro solid;
@@ -219,4 +221,13 @@ a.button {
     text-decoration: none;
     text-shadow: #222 0 1px 1px;
     vertical-align: middle
+}
+
+.help {
+  border-radius: 8px;
+  background: #aaaaaa;
+  color: white;
+  padding: 5px;
+  cursor: help;
+  font-weight: bold;
 }

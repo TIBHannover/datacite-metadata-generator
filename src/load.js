@@ -45,9 +45,10 @@ function fillFormFromXML(xml) {
           callback(clone_elem, add_button);
         }
       });
-    } else if (form_elem.length == 1) {
+  } else if (form_elem.length >= 1 && form_elem.length <= 5) {
       callback(form_elem, add_button);
     } else {
+		debugger;
       error("unknown xml element", xml_elem, form_elem);
     }
   }
@@ -75,9 +76,10 @@ function fillFormFromXML(xml) {
     if (value.trim() === "")
       return;
     var form_field = $("*[title='" + tag + "']", form_elem).filter(".tag-value");
-    if (form_field.length == 1) {
+    if (form_field.length >= 1 && form_field.length <= 5) {
       form_field.val(value);
     } else {
+		debugger;
       error("unknown xml element", xml_elem, form_elem);
     }
   }
@@ -88,9 +90,10 @@ function fillFormFromXML(xml) {
       var attr = this.name;
       var value = this.value;
       var form_field = $("*[title='" + attr + "']",form_elem).filter(".tag-attribute");
-      if (form_field.length == 1) {
+      if (form_field.length >= 1 && form_field.length <= 5) {
         form_field.val(value);
       } else {
+		  debugger;
         error("unknown xml attribute '" + attr + "'", xml_elem, form_elem);
       }
     });

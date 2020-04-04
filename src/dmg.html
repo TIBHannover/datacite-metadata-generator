@@ -4,15 +4,13 @@
 <!-- modified: 2015-02-04 paluchm - Updated to Kernel 3.1 -->
 <!-- modified: 2015-11-01 paluchm - Fixed HTML validation problems. Modified implementation so that new XML tags can be generated just by adding HTML elements with proper names and classes. -->
 <!-- modified: 2016-01-09 paluchm - Fixed rightsList tag name. -->
-<!-- modified: 2016-10-24 koelnconcert - Updated for Kernel 4.0 -->
-<!-- modified: 2017-12-11 koelnconcert - Updated for Kernel 4.1 -->
 <!-- This form makes use of styles developed by the wet-boew project (https://github.com/wet-boew/wet-boew)  -->
 <!-- Recommended browsers are Firefox or Chrome. Minimum supported IE version is 8 (save feature currently not supported in IE)-->
 <head>
 <meta charset="utf-8" />
-<title>DataCite Metadata Generator - Kernel 4.1</title>
+<title>TIB Metadata Generator - NTM Schema 2.4</title>
 <!-- inject:js -->
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script type="text/javascript" src="dmg.js"></script>
 <script type="text/javascript" src="load.js"></script>
 <!-- endinject -->
@@ -20,18 +18,47 @@
 <link rel="stylesheet" href="dmg.css" />
 <!-- endinject -->
 <!--[if IE]><script>function save(){alert("Not currently supported in Internet Explorer");}</script><![endif]-->
+<script type="text/javascript">
+	var kernelVersion = "2.4"; // #TODO Set this to every new real version of NTM-Metadata-Schema!
+	var scriptVersion = kernelVersion + "." + "2020-03-20";
+	var kernelNamespace = "http://www.tib.eu/ext/knm/NTM-Metadata-Schema_v_" + kernelVersion + ".xsd";
+	var kernelSchema = "NTM-Metadata-Schema_v_" + kernelVersion + ".xsd";
+	var optionValues = {
+		descriptionType: ["Abstract", "TechnicalRemarks"],
+		resourceType: ["Audio", "Audiovisual", "Collection", "Dataset", "Event", "Image", "InteractiveResource", "Model", "PhysicalObject", "Service", "Software"],
+		titleType: ["AlternativeTitle", "Subtitle"],
+		language: ["ger", "eng", "qno", "qsw", "alb", "dan", "fre", "grc", "chi", "heb", "ita", "jpn", "kor", "hrv", "dut", "nor", "pol", "por", "rus", "swe", "srp", "slo", "slv", "spa", "cze", "tur", "hun", "mul", "qot", "zxx", "mis"],
+		subjectArea: ["Architecture", "Arts and Media", "Biology", "Chemistry", "Computer Science", "Economics and Social Science", "Educational Science", "Environmental Sciences/Ecology", "Ethnology", "Geological Sciences", "History", "Horticulture", "Information Science", "Law", "Linguistics", "Literature Studies", "Mathematics", "Medicine", "Philosophy", "Physics", "Psychology", "Sports", "Study of Religions", "Technology/Engineering", "Other"],
+		genre: ["Conference/Talk", "Documentation/Report", "Experiment/Model Test", "Interview", "Lecture", "Research Data", "Video Abstract", "Webinar/Tutorial", "Other Video"],
+		additionalMaterialType: ["File", "URL"],
+		relatedIdentifierType: ["ARK", "DOI", "EAN13", "EISSN", "Handle", "ISBN", "ISSN", "ISTC", "LISSN", "LSID", "PMID", "PROBADO", "PURL", "UPC", "URN"],
+		relationType: ["cites", "isCitedBy", "isSupplementedBy", "isSupplementTo"],
+		linkType: ["av_portal", "linkToExternalData", "linkToThumbnail", "flash_lq", "flash_hq"]
+	};
+	optionValues.videoSubtitleLanguage = optionValues.language;
+</script>
 </head>
-<body data-namespace="http://datacite.org/schema/kernel-4" data-schema="http://schema.datacite.org/meta/kernel-4.1/metadata.xsd">
-<h2 class="pagetitle">DataCite Metadata Generator - Kernel 4.1</h2>
+<body>
+<h2 class="pagetitle">TIB Metadata Generator - NTM Schema 2.4</h2>
 <div class="left">
 <h3 class="mandatory">Mandatory Elements</h3>
 <div class="form mandatory">
-	<div class="section">
-		<span class="tag-group-label">DOI:</span>
+	<div title="creators" class="section wrapper-tag">
+		<span class="tag-group-label">Creator(s):</span>
+		<button type="button" class="add group">+</button>
 		<div class="tag-group">
-			<div title="identifier" class="tag">
-				<input class="input-field full-width tag-value" type="text" placeholder="[DOI]" title="identifier" value="" />
-				<input class="input-field tag-attribute" type="hidden" title="identifierType" value="DOI" />
+			<div title="creator" class="tag">
+				<div title="creatorName" class="tag">
+					<input class="full-width input-field tag-value" type="text" placeholder="[CREATOR NAME]" title="creatorName" value="" />
+					<span class="help" title="This is a sample help tooltip">i</span>
+				</div>
+				<span class="tag-group-label indent">nameIdentifier(s):</span>
+				<div title="nameIdentifier" class="tag indent">
+					<input class="half-width input-field tag-value" type="text" placeholder="[NAME IDENTIFIER]" title="nameIdentifier" value="" />
+					<input class="half-width input-field tag-attribute" type="text" placeholder="[NAME ID SCHEME]" title="nameIdentifierScheme" value="" />
+					<button type="button" class="add single-tag">+</button>
+					<input class="full-width input-field tag-attribute" type="text" placeholder="[IDENTIFIER SCHEME URI]" title="schemeURI" value="" />
+				</div>
 			</div>
 		</div>
 	</div>
@@ -42,79 +69,28 @@
 		<div class="tag-group">
 			<div title="title" class="tag">
 				<input class="full-width input-field tag-value" type="text" placeholder="[TITLE]" title="title" value="" />
-				<select class="half-width input-field tag-attribute" title="titleType">
-					<option>AlternativeTitle</option>
-					<option>Subtitle</option>
-					<option>TranslatedTitle</option>
-					<option>Other</option>
-				</select>
-				<input class="half-width input-field tag-attribute" type="text" placeholder="[XML:LANG] e.g. 'en' or 'de'" title="xml:lang" value="" />
+				<select class="half-width input-field tag-attribute" title="titleType"></select>
+				<select class="half-width input-field tag-attribute" title="language"></select>
+				<!-- in xsd @language has just pattern "[a-z]{3}". Controlled vocabulary requested by Team NTM -->
 			</div>
 		</div>
 	</div>
 	<span class="divider">&nbsp;</span>
-	<div title="creators" class="section wrapper-tag">
-		<span class="tag-group-label">Creator(s):</span>
+	<div title="publishers" class="section wrapper-tag">
+		<span class="tag-group-label">Publisher(s):</span>
 		<button type="button" class="add group">+</button>
 		<div class="tag-group">
-			<div title="creator" class="tag">
-				<div title="creatorName" class="tag">
-					<input class="full-width input-field tag-value" type="text" placeholder="[CREATOR NAME]" title="creatorName" value="" />
-					<select class="half-width input-field tag-attribute" title="nameType">
-						<option>Organizational</option>
-						<option>Personal</option>
-					</select>
+			<div title="publisher" class="tag">
+				<div title="publisherName" class="tag">
+					<input class="full-width input-field tag-value" type="text" placeholder="[PUBLISHER NAME]" title="publisherName" value="" />
 				</div>
-				<div title="givenName" class="tag">
-					<input class="full-width input-field tag-value" type="text" placeholder="[GIVEN NAME OPTIONAL]" title="givenName" value="" />
-				</div>
-				<div title="familyName" class="tag">
-					<input class="full-width input-field tag-value" type="text" placeholder="[FAMILY NAME OPTIONAL]" title="familyName" value="" />
-				</div>
-				<div title="nameIdentifier" class="tag">
+				<span class="tag-group-label indent">nameIdentifier(s):</span>
+				<div title="nameIdentifier" class="tag indent">
 					<input class="half-width input-field tag-value" type="text" placeholder="[NAME IDENTIFIER]" title="nameIdentifier" value="" />
 					<input class="half-width input-field tag-attribute" type="text" placeholder="[NAME ID SCHEME]" title="nameIdentifierScheme" value="" />
+					<button type="button" class="add single-tag">+</button>
 					<input class="full-width input-field tag-attribute" type="text" placeholder="[IDENTIFIER SCHEME URI]" title="schemeURI" value="" />
-					<button type="button" class="add single-tag">+</button>
 				</div>
-				<div title="affiliation" class="tag">
-					<input class="unbounded-width input-field tag-value" type="text" placeholder="[CREATOR AFFILIATION]" title="affiliation" value="" />
-					<button type="button" class="add single-tag">+</button>
-				</div>
-			</div>
-		</div>
-	</div>
-	<span class="divider">&nbsp;</span>
-	<div class="section">
-		<span class="tag-group-label">Publisher:</span>
-		<div class="tag-group">
-			<div title="publisher" class="tag">
-				<input type="text" class="full-width input-field tag-value" placeholder="[PUBLISHER]" title="publisher" value="" />
-			</div>
-		</div>
-	</div>
-	<div class="section">
-		<span class="tag-group-label">Resource Type:</span>
-		<div class="tag-group">
-			<div title="resourceType" class="tag">
-				<input class="half-width input-field tag-value" type="text" placeholder="[RESOURCE TYPE]" title="resourceType" value="" />
-				<select class="half-width input-field tag-attribute" title="resourceTypeGeneral">
-					<option>Audiovisual</option>
-					<option>Collection</option>
-					<option>Dataset</option>
-					<option>DataPaper</option>
-					<option>Event</option>
-					<option>Image</option>
-					<option>InteractiveResource</option>
-					<option>Model</option>
-					<option>PhysicalObject</option>
-					<option>Service</option>
-					<option>Software</option>
-					<option>Sound</option>
-					<option>Text</option>
-					<option>Workflow</option>
-					<option>Other</option>
-				</select>
 			</div>
 		</div>
 	</div>
@@ -124,22 +100,30 @@
 		<div class="tag-group">
 			<div title="publicationYear" class="tag">
 				<input type="text" class="full-width input-field tag-value" placeholder="[YYYY]" title="publicationYear" pattern="[0-9]{4}" value="" />
+				<!-- in xsd publicationYear is of type "xs:gYear", allowing time zone as well -->
 			</div>
 		</div>
 	</div>
+	<span class="divider">&nbsp;</span>
+	<div class="section">
+		<span class="tag-group-label">Language:</span>
+		<div class="tag-group">
+			<div title="language" class="tag">
+				<select class="full-width input-field tag-value" title="language"></select>
+				<!-- in xsd @language has just pattern "[a-z]{3}". Controlled vocabulary requested by Team NTM -->
+			</div>
+		</div>
+	</div>
+	<span class="divider">&nbsp;</span>
 </div>
-<h3 class="recommended">+ Recommended Elements</h3>
-<div id="recommended" class="form recommended hidden">
-	<div title="subjects" class="section wrapper-tag">
-		<span class="tag-group-label">Subject(s):</span>
+<h3 class="other">+ Other Elements</h3>
+<div id="other" class="form other hidden">
+	<div title="subjectAreas" class="section wrapper-tag">
+		<span class="tag-group-label">SubjectArea(s):</span>
 		<button type="button" class="add group">+</button>
 		<div class="tag-group">
-			<div title="subject" class="tag">
-				<input class="half-width input-field tag-value" type="text" placeholder="[SUBJECT]" title="subject" value="" />
-				<input class="half-width input-field tag-attribute" type="text" placeholder="[SUBJECT VALUE URI]" title="valueURI" value="" />
-				<input class="half-width input-field tag-attribute" type="text" placeholder="[SUBJECT SCHEME]" title="subjectScheme" value="" />
-				<input class="half-width input-field tag-attribute" type="text" placeholder="[SUBJECT SCHEME URI]" title="schemeURI" value="" />
-				<input class="half-width input-field tag-attribute" type="text" placeholder="[XML:LANG] e.g. 'en' or 'de'" title="xml:lang" value="" />
+			<div title="subjectArea" class="tag">
+				<select class="full-width input-field tag-value" title="subjectArea"></select>
 			</div>
 		</div>
 	</div>
@@ -151,273 +135,129 @@
 			<div title="contributor" class="tag">
 				<div title="contributorName" class="tag">
 					<input class="full-width input-field tag-value" type="text" placeholder="[CONTRIBUTOR NAME]" title="contributorName" value="" />
-					<select class="half-width input-field tag-attribute" title="nameType">
-						<option>Organizational</option>
-						<option>Personal</option>
-					</select>
 				</div>
-				<select class="half-width input-field tag-attribute" title="contributorType">
-					<option>ContactPerson</option>
-					<option>DataCollector</option>
-					<option>DataCurator</option>
-					<option>DataManager</option>
-					<option>Distributor</option>
-					<option>Editor</option>
-					<option>Funder</option>
-					<option>HostingInstitution</option>
-					<option>Other</option>
-					<option>Producer</option>
-					<option>ProjectLeader</option>
-					<option>ProjectManager</option>
-					<option>ProjectMember</option>
-					<option>RegistrationAgency</option>
-					<option>RegistrationAuthority</option>
-					<option>RelatedPerson</option>
-					<option>Researcher</option>
-					<option>ResearchGroup</option>
-					<option>RightsHolder</option>
-					<option>Sponsor</option>
-					<option>Supervisor</option>
-					<option>WorkPackageLeader</option>
-				</select>
-				<div title="givenName" class="tag">
-					<input class="full-width input-field tag-value" type="text" placeholder="[GIVEN NAME OPTIONAL]" title="givenName" value="" />
-				</div>
-				<div title="familyName" class="tag">
-					<input class="full-width input-field tag-value" type="text" placeholder="[FAMILY NAME OPTIONAL]" title="familyName" value="" />
-				</div>
-				<div title="nameIdentifier" class="tag">
+				<span class="tag-group-label indent">nameIdentifier(s):</span>
+				<div title="nameIdentifier" class="tag indent">
 					<input class="half-width input-field tag-value" type="text" placeholder="[NAME IDENTIFIER]" title="nameIdentifier" value="" />
 					<input class="half-width input-field tag-attribute" type="text" placeholder="[NAME ID SCHEME]" title="nameIdentifierScheme" value="" />
 					<input class="full-width input-field tag-attribute" type="text" placeholder="[IDENTIFIER SCHEME URI]" title="schemeURI" value="" />
-					<button type="button" class="add single-tag">+</button>
-				</div>
-				<div title="affiliation" class="tag">
-					<input class="unbounded-width input-field tag-value" type="text" placeholder="[CONTRIBUTOR AFFILIATION]" title="affiliation" value="" /><button type="button" class="add single-tag">+</button>
-				</div>
-			</div>
-		</div>
-	</div>
-	<div title="fundingReferences" class="section wrapper-tag">
-		<span class="tag-group-label">Funder(s):</span>
-		<button type="button" class="add group">+</button>
-		<div class="tag-group">
-			<div title="fundingReference" class="tag">
-				<div title="funderName" class="tag">
-					<input class="full-width input-field tag-value" type="text" placeholder="[FUNDER NAME]" title="funderName" value="" />
-				</div>
-				<div title="funderIdentifier" class="tag">
-					<input class="half-width input-field tag-value" type="text" placeholder="[FUNDER IDENTIFIER]" title="funderIdentifier" value="" />
-					<select class="half-width input-field tag-attribute" title="funderIdentifierType">
-						<option>ISNI</option>
-						<option>GRID</option>
-						<option>Crossref Funder ID</option>
-						<option>Other</option>
-					</select>
-				</div>
-				<div title="awardNumber" class="tag">
-					<input class="half-width input-field tag-value" type="text" placeholder="[AWARD NUMBER]" title="awardNumber" value="" />
-					<input class="half-width input-field tag-attribute" type="text" placeholder="[AWARD URI]" title="awardURI" value="" />
-				</div>
-				<div title="awardTitle" class="tag">
-					<input class="full-width input-field tag-value" type="text" placeholder="[AWARD TITLE]" title="awardTitle" value="" />
 				</div>
 			</div>
 		</div>
 	</div>
 	<span class="divider">&nbsp;</span>
-	<div title="dates" class="section wrapper-tag">
-		<span class="tag-group-label">Date(s):</span>
+	<div title="producers" class="section wrapper-tag">
+		<span class="tag-group-label">Producer(s):</span>
 		<button type="button" class="add group">+</button>
 		<div class="tag-group">
-			<div title="date" class="tag">
-				<input class="half-width input-field tag-value" type="text" placeholder="[DATE]" title="date" value="" />
-				<select class="half-width input-field tag-attribute" title="dateType">
-					<option>Accepted</option>
-					<option>Available</option>
-					<option>Copyrighted</option>
-					<option>Collected</option>
-					<option>Created</option>
-					<option>Issued</option>
-					<option>Other</option>
-					<option>Submitted</option>
-					<option>Updated</option>
-					<option>Valid</option>
-				</select>
-				<input class="full-width input-field tag-attribute" type="text" placeholder="[DATE INFORMATION]" title="dateInformation" value="" />
+			<div title="producer" class="tag">
+				<div title="producerName" class="tag">
+					<input class="full-width input-field tag-value" type="text" placeholder="[PRODUCER NAME]" title="producerName" value="" />
+				</div>
+				<span class="tag-group-label indent">nameIdentifier(s):</span>
+				<div title="nameIdentifier" class="tag indent">
+					<input class="half-width input-field tag-value" type="text" placeholder="[NAME IDENTIFIER]" title="nameIdentifier" value="" />
+					<input class="half-width input-field tag-attribute" type="text" placeholder="[NAME ID SCHEME]" title="nameIdentifierScheme" value="" />
+					<input class="full-width input-field tag-attribute" type="text" placeholder="[IDENTIFIER SCHEME URI]" title="schemeURI" value="" />
+				</div>
 			</div>
 		</div>
 	</div>
 	<span class="divider">&nbsp;</span>
-<div title="relatedIdentifiers" class="section wrapper-tag">
-		<span class="tag-group-label">Related Identifier(s):</span>
+	<div class="section">
+		<span class="tag-group-label">Production Year:</span>
+		<div class="tag-group">
+			<div title="productionYear" class="tag">
+				<input type="text" class="full-width input-field tag-value" placeholder="[YYYY] or [YYYY/ZZZZ]" title="productionYear" pattern="(\d){4}(/(\d){4})?" value="" />
+			</div>
+		</div>
+	</div>
+	<span class="divider">&nbsp;</span>
+	<div class="section">
+		<span class="tag-group-label">Production Place:</span>
+		<div class="tag-group">
+			<div title="productionPlace" class="tag">
+				<input type="text" class="full-width input-field tag-value" placeholder="[PRODUCTION PLACE]" title="productionPlace" value="" />
+				<!-- in xsd publicationYear is of type "xs:gYear", allowing time zone as well -->
+			</div>
+		</div>
+	</div>
+	<span class="divider">&nbsp;</span>
+<!--
+	<div class="section">
+		<span class="tag-group-label">Resource Type:</span>
+		<div class="tag-group">
+			<div title="resourceType" class="tag">
+				<select class="full-width input-field tag-value" title="resourceType"></select>
+			</div>
+		</div>
+	</div>
+	<span class="divider">&nbsp;</span>
+-->
+	<div class="section">
+		<span class="tag-group-label">Genre:</span>
+		<div class="tag-group">
+			<div title="genre" class="tag">
+				<select class="full-width input-field tag-value" title="genre"></select>
+			</div>
+		</div>
+	</div>
+	<span class="divider">&nbsp;</span>
+	<div class="section">
+		<span class="tag-group-label">Video Subtitle Language:</span>
+		<div class="tag-group">
+			<div title="videoSubtitleLanguage" class="tag">
+				<select class="full-width input-field tag-value" title="videoSubtitleLanguage"></select>
+				<!-- in xsd @language has just pattern "[a-z]{3}". Controlled vocabulary requested by Team NTM -->
+			</div>
+		</div>
+	</div>
+	<span class="divider">&nbsp;</span>
+	<div title="keywords" class="section wrapper-tag">
+		<span class="tag-group-label">Keywords:</span>
 		<button type="button" class="add group">+</button>
 		<div class="tag-group">
-			<div title="relatedIdentifier" class="tag">
-				<input class="full-width input-field tag-value" type="text" placeholder="[RELATED IDENTIFIER]" title="relatedIdentifier" value="" />
-				<select class="half-width input-field tag-attribute" title="relatedIdentifierType">
-					<option>ARK</option>
-					<option>arXiv</option>
-					<option>bibcode</option>
-					<option>DOI</option>
-					<option>EAN13</option>
-					<option>EISSN</option>
-					<option>Handle</option>
-					<option>ISBN</option>
-					<option>IGSN</option>
-					<option>ISSN</option>
-					<option>ISTC</option>
-					<option>LISSN</option>
-					<option>LSID</option>
-					<option>PMID</option>
-					<option>PURL</option>
-					<option>UPC</option>
-					<option>URL</option>
-					<option>URN</option>
-				</select>
-				<select class="half-width input-field tag-attribute" title="relationType">
-					<option>IsCitedBy</option>
-					<option>Cites</option>
-					<option>IsSupplementTo</option>
-					<option>IsSupplementedBy</option>
-					<option>IsContinuedBy</option>
-					<option>Continues</option>
-					<option>IsNewVersionOf</option>
-					<option>IsPreviousVersionOf</option>
-					<option>IsPartOf</option>
-					<option>HasPart</option>
-					<option>IsReferencedBy</option>
-					<option>References</option>
-					<option>IsDocumentedBy</option>
-					<option>Documents</option>
-					<option>IsCompiledBy</option>
-					<option>Compiles</option>
-					<option>IsVariantFormOf</option>
-					<option>IsOriginalFormOf</option>
-					<option>IsIdenticalTo</option>
-					<option>HasMetadata</option>
-					<option>IsMetadataFor</option>
-					<option>Reviews</option>
-					<option>IsReviewedBy</option>
-					<option>IsDerivedFrom</option>
-					<option>IsSourceOf</option>
-					<option>Describes</option>
-					<option>IsDescribedBy</option>
-					<option>HasVersion</option>
-					<option>IsVersionOf</option>
-					<option>Requires</option>
-					<option>IsRequiredBy</option>
-				</select>
-				<select class="half-width input-field tag-attribute" title="resourceTypeGeneral">
-					<option>Audiovisual</option>
-					<option>Collection</option>
-					<option>Dataset</option>
-					<option>DataPaper</option>
-					<option>Event</option>
-					<option>Image</option>
-					<option>InteractiveResource</option>
-					<option>Model</option>
-					<option>PhysicalObject</option>
-					<option>Service</option>
-					<option>Software</option>
-					<option>Sound</option>
-					<option>Text</option>
-					<option>Workflow</option>
-					<option>Other</option>
-				</select>
-				<br/>
-				<input class="half-width input-field tag-attribute" type="text" placeholder="[METADATA SCHEME]" title="relatedMetadataScheme" value="" />
-				<input class="half-width input-field tag-attribute" type="text" placeholder="[SCHEME TYPE]" title="schemeType" value="" />
-				<input class="full-width input-field tag-attribute" type="text" placeholder="[SCHEME URI]" title="schemeURI" value="" />
+			<div title="keyword" class="tag">
+				<input class="half-width input-field tag-value" type="text" placeholder="[KEYWORD]" title="keyword" value="" />
+				<select class="half-width input-field tag-attribute" title="language"></select>
+				<!-- in xsd @language has just pattern "[a-z]{3}". Controlled vocabulary requested by Team NTM -->
 			</div>
 		</div>
 	</div>
 	<span class="divider">&nbsp;</span>
 	<div title="descriptions" class="section wrapper-tag">
-		<span class="tag-group-label">Description:</span>
+		<span class="tag-group-label">Abstract</span>
 		<button type="button" class="add group">+</button>
 		<div class="tag-group">
 			<div title="description" class="tag">
-				<input class="full-width input-field tag-value" type="text" placeholder="[DESCRIPTION]" title="description" value="" />
-				<select class="half-width input-field tag-attribute" title="descriptionType">
-					<option>Abstract</option>
-					<option>Methods</option>
-					<option>SeriesInformation</option>
-					<option>TableOfContents</option>
-					<option>TechnicalInfo</option>
-					<option>Other</option>
-				</select>
-				<input class="half-width input-field tag-attribute" type="text" placeholder="[XML:LANG] e.g. 'en' or 'de'" title="xml:lang" value="" />
+				<input class="full-width input-field tag-value" type="text" placeholder="[ABSTRACT]" title="description" value="" />
+				<!-- in xsd description is mixed-content with text and <br> allowed. This is not possible to implement with the current form -->
+			<!-- allow only Abstract instead of option list for desciptionType
+				<select class="half-width input-field tag-attribute" title="descriptionType"></select>
+			-->
+				<input class="input-field tag-attribute" type="hidden" title="descriptionType" value="Abstract" />
+				<select class="full-width input-field tag-attribute" title="language"></select>
+				<!-- in xsd @language has just pattern "[a-z]{3}". Controlled vocabulary requested by Team NTM -->
 			</div>
 		</div>
 	</div>
 	<span class="divider">&nbsp;</span>
-	<div title="geoLocations" class="section wrapper-tag">
-		<span class="tag-group-label">Geo Location:</span>
+	<div title="subjects" class="section wrapper-tag">
+		<span class="tag-group-label">Subject(s):</span>
 		<button type="button" class="add group">+</button>
 		<div class="tag-group">
-			<div title="geoLocation" class="tag">
-				<div title="geoLocationPlace" class="tag">
-					<span class="tag-label">Place:</span>
-					<input class="full-width input-field tag-value" type="text" placeholder="[GEO LOCATION PLACE]" title="geoLocationPlace" value="" />
-				</div>
-				<div title="geoLocationPoint" class="tag">
-					<span class="tag-label">Point:</span>
-					<div title="pointLongitude" class="tag">
-						<input class="half-width input-field tag-value" type="text" placeholder="[POINT LONGITUDE]" title="pointLongitude" value="" />
-					</div>
-					<div title="pointLatitude" class="tag">
-						<input class="half-width input-field tag-value" type="text" placeholder="[POINT LATITUDE]" title="pointLatitude" value="" />
-					</div>
-				</div>
-				<div title="geoLocationBox" class="tag">
-					<span class="tag-label">Box:</span>
-					<div title="westBoundLongitude" class="tag">
-						<input class="half-width input-field tag-value" type="text" placeholder="[westBoundLongitude]" title="westBoundLongitude" value="" />
-					</div>
-					<div title="eastBoundLongitude" class="tag">
-						<input class="half-width input-field tag-value" type="text" placeholder="[eastBoundLongitude]" title="eastBoundLongitude" value="" />
-					</div>
-					<div title="southBoundLatitude" class="tag">
-						<input class="half-width input-field tag-value" type="text" placeholder="[southBoundLatitude]" title="southBoundLatitude" value="" />
-					</div>
-					<div title="northBoundLatitude" class="tag">
-						<input class="half-width input-field tag-value" type="text" placeholder="[northBoundLatitude]" title="northBoundLatitude" value="" />
-					</div>
-				</div>
-				<div title="geoLocationPolygon" class="tag">
-					<span class="tag-label">Polygon:</span>
-					<div title="polygonPoint" class="tag">
-						<div title="pointLongitude" class="tag">
-							<input class="half-width input-field tag-value" type="text" placeholder="[POLYGON POINT LONGITUDE]" title="pointLongitude" value="" />
-						</div>
-						<div title="pointLatitude" class="tag">
-							<input class="half-width input-field tag-value" type="text" placeholder="[POLYGON POINT LATITUDE]" title="pointLatitude" value="" />
-						</div>
-						<button type="button" class="add single-tag">+</button>
-					</div>
-					<br/>
-					<div title="inPolygonPoint" class="tag">
-						<div title="pointLongitude" class="tag">
-							<input class="half-width input-field tag-value" type="text" placeholder="[IN POLYGON POINT LONGITUDE]" title="pointLongitude" value="" />
-						</div>
-						<div title="pointLatitude" class="tag">
-							<input class="half-width input-field tag-value" type="text" placeholder="[IN POLYGON POINT LATITUDE]" title="pointLatitude" value="" />
-						</div>
-					</div>
-					<button type="button" class="add single-tag group">+</button>
-				</div>
+			<div title="subject" class="tag">
+				<input class="half-width input-field tag-value" type="text" placeholder="[SUBJECT]" title="subject" value="" />
+				<input class="half-width input-field tag-attribute" type="text" placeholder="[SUBJECT SCHEME]" title="subjectScheme" value="" />
 			</div>
 		</div>
 	</div>
-</div>
-<h3 class="other">+ Other Elements</h3>
-<div id="other" class="form other hidden">
+	<span class="divider">&nbsp;</span>
 	<div class="section">
-		<span class="tag-group-label">Language:</span>
+		<span class="tag-group-label">DOI:</span>
 		<div class="tag-group">
-			<div title="language" class="tag">
-				<input class="full-width input-field tag-value" type="text" placeholder="[LANGUAGE]" title="language" value="" />
+			<div title="DOI" class="tag">
+				<input class="input-field full-width tag-value" type="text" placeholder="[DOI]" title="DOI" value="" pattern="10\.\d+/.+"/>
 			</div>
 		</div>
 	</div>
@@ -433,19 +273,60 @@
 		</div>
 	</div>
 	<span class="divider">&nbsp;</span>
-	<div title="sizes" class="section wrapper-tag">
-		<span class="tag-group-label">Size(s):</span>
+	<div title="series" class="section wrapper-tag">
+		<span class="tag-group-label">Series:</span>
+		<div class="tag-group">
+			<div title="seriesTitle" class="tag">
+				<input class="full-width input-field tag-value" type="text" placeholder="[SERIES TITLE]" title="seriesTitle" value="" />
+			</div>
+			<div title="seriesPublisher" class="tag">
+				<input class="full-width input-field tag-value" type="text" placeholder="[SERIES PUBLISHER]" title="seriesPublisher" value="" />
+			</div>
+			<div title="totalPartNo" class="tag">
+				<input class="half-width input-field tag-value" type="text" placeholder="[totalPartNo]" title="totalPartNo" value="" />
+			</div>
+			<div title="partNo" class="tag">
+				<input class="half-width input-field tag-value" type="text" placeholder="[partNo]" title="partNo" value="" />
+			</div>
+		<!--
+			<div title="seriesMAM" class="tag">
+				<input class="half-width input-field tag-value" type="text" placeholder="[seriesMAM]" title="seriesMAM" value="" />
+			</div>
+		-->
+			<br/>
+		</div>
+	</div>
+	<span class="divider">&nbsp;</span>
+	<div title="additionalMaterials" class="section wrapper-tag">
+		<span class="tag-group-label">Additional Material(s):</span>
 		<button type="button" class="add group">+</button>
 		<div class="tag-group">
-			<div title="size" class="tag">
-				<input class="full-width input-field tag-value" type="text" placeholder="[SIZE]" title="size" value="" />
+			<div title="additionalMaterial" class="tag">
+				<input class="half-width input-field tag-value" type="text" placeholder="[ADDITIONAL MATERIAL]" title="additionalMaterial" value="" />
+				<select class="half-width input-field tag-attribute" title="additionalMaterialType"></select>
+				<input class="full-width input-field tag-attribute" type="text" placeholder="[ADDITIONAL MATERIAL TITLE]" title="additionalMaterialTitle" value="" />
+				<input class="full-width input-field tag-attribute" type="text" placeholder="[RELATED IDENTIFIER]" title="relatedIdentifier" value="" />
+				<select class="half-width input-field tag-attribute" title="relatedIdentifierType"></select>
+				<select class="half-width input-field tag-attribute" title="relationType"></select>
+			</div>
+			<br/>
+		</div>
+	</div>
+	<span class="divider">&nbsp;</span>
+<!--
+	<div title="links" class="section wrapper-tag">
+		<span class="tag-group-label">Link(s):</span>
+		<button type="button" class="add group">+</button>
+		<div class="tag-group">
+			<div title="link" class="tag">
+				<input class="half-width input-field tag-value" type="text" placeholder="[LINK]" title="link" value="" />
+				<select class="half-width input-field tag-attribute" title="linkType"></select>
 			</div>
 		</div>
 	</div>
 	<span class="divider">&nbsp;</span>
-	<div title="formats" class="section wrapper-tag">
-		<span class="tag-group-label">Format(s):</span>
-		<button type="button" class="add group">+</button>
+	<div class="section">
+		<span class="tag-group-label">Format:</span>
 		<div class="tag-group">
 			<div title="format" class="tag">
 				<input class="full-width input-field tag-value" type="text" placeholder="[FORMAT]" title="format" value="" />
@@ -454,25 +335,33 @@
 	</div>
 	<span class="divider">&nbsp;</span>
 	<div class="section">
-		<span class="tag-group-label">Version:</span>
+		<span class="tag-group-label">Size:</span>
 		<div class="tag-group">
-			<div title="version" class="tag">
-				<input class="full-width input-field tag-value" type="text" placeholder="[VERSION]" title="version" value="" />
+			<div title="size" class="tag">
+				<input class="full-width input-field tag-value" type="text" placeholder="[SIZE]" title="size" value="" />
 			</div>
 		</div>
 	</div>
 	<span class="divider">&nbsp;</span>
-	<div title="rightsList" class="section wrapper-tag">
-		<span class="tag-group-label">Rights List:</span>
-		<button type="button" class="add group">+</button>
+	<div class="section">
+		<span class="tag-group-label">Duration:</span>
 		<div class="tag-group">
-			<div title="rights" class="tag">
-				<input class="full-width input-field tag-value" type="text" placeholder="[RIGHTS]" title="rights" value="" />
-				<input class="full-width input-field tag-attribute" type="text" placeholder="[RIGHTS URI]" title="rightsURI" value="" />
-				<input class="half-width input-field tag-attribute" type="text" placeholder="[XML:LANG] e.g. 'en' or 'de'" title="xml:lang" value="" />
+			<div title="duration" class="tag">
+				<input class="full-width input-field tag-value" type="text" placeholder="[00:00:00:00]" title="duration" value="" pattern="[0-9][0-9]:[0-9][0-9]:[0-9][0-9]:[0-9][0-9]"/>
 			</div>
 		</div>
 	</div>
+	<span class="divider">&nbsp;</span>
+	<div class="section">
+		<span class="tag-group-label">IWF Signature:</span>
+		<div class="tag-group">
+			<div title="iwfSignature" class="tag">
+				<input class="full-width input-field tag-value" type="text" placeholder="[IWF SIGNATURE]" title="iwfSignature" value="" />
+			</div>
+		</div>
+	</div>
+	<span class="divider">&nbsp;</span>
+-->
 </div>
 <br />
 Load xml file: <input id="loadfile" type="file"/>

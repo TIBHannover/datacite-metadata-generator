@@ -14,7 +14,7 @@ function injectContent(stream) {
 }
 
 gulp.task("default", function() {
-  var js = gulp.src(['node_modules/jquery/jquery.js','src/dmg.js','src/load.js'])
+  var js = gulp.src(['src/jquery-3.4.1.js','src/dmg.js','src/load.js'])
     .pipe(uglify())
     .pipe(wrap("<script type=\"text/javascript\">\n<%= contents %>\n</script>"));
   var css = gulp.src(['src/dmg.css'])
@@ -24,6 +24,6 @@ gulp.task("default", function() {
   gulp.src('src/dmg.html')
     .pipe(injectContent(js))
     .pipe(injectContent(css))
-    .pipe(rename("datacite_metadata_generator.html"))
-    .pipe(gulp.dest('./dist/'));
+    .pipe(rename("tib_ntm_metadata_generator.html"))
+    .pipe(gulp.dest('./'));
 });
