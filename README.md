@@ -5,7 +5,7 @@ This is a single HTML form which can be used to generate TIB NTM Schema 2.2 XML.
 
 Download:
 =========
-[Download Here](https://raw.github.com/koelnconcert/datacite-metadata-generator/ntm/tib_ntm_metadata_generator.html) (right click and use 'Save As', make sure extension is .html)
+[Download Here](https://raw.githubusercontent.com/Junaid112/datacite-metadata-generator/master/tib_ntm_metadata_generator.html) (right click and use 'Save As', make sure extension is .html)
 
 How to use:
 ===========
