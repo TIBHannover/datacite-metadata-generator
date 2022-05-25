@@ -224,10 +224,19 @@ a.button {
 }
 
 .help {
-  border-radius: 8px;
+  border-radius: 20px;
   background: #aaaaaa;
   color: white;
-  padding: 5px;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  padding-left: 10px;
+  padding-right: 10px;
   cursor: help;
-  font-weight: bold;
+  margin-left:5px;
+  margin-right:5px;
 }
+
+span.help{
+	left:0px;
+	position:relative;
+	}
