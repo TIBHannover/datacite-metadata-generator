@@ -48,6 +48,7 @@ body{font-family:sans-serif}.hidden{display:none}.visible{display:block}.input-f
 	};
 	optionValues.videoSubtitleLanguage = optionValues.language;
 </script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
 <h2 class="pagetitle">TIB Metadata Generator - NTM Schema 2.5</h2>
@@ -55,7 +56,7 @@ body{font-family:sans-serif}.hidden{display:none}.visible{display:block}.input-f
 <h3 class="mandatory">Mandatory Elements</h3>
 <div class="form mandatory">
 	<div title="creators" class="section wrapper-tag">
-		<span class="help" title="Name of the person(s) who are responsible for the content of the film.">i</span>
+		<span title="Name of the person(s) who are responsible for the content of the film."><i class="fa fa-info-circle" style="cursor: help; color:grey;"></i></span>
 		<span class="tag-group-label">Creator(s):</span>
 		<button type="button" class="add group">+</button>
 		<div class="tag-group">
@@ -381,6 +382,8 @@ body{font-family:sans-serif}.hidden{display:none}.visible{display:block}.input-f
 Load xml file: <input id="loadfile" type="file"/>
 <pre id="log">
 </pre>
+<div><a href="https://github.com/Junaid112/datacite-metadata-generator/blob/master/LICENSE.md" style="color:#af1414;">
+<i class="fa fa-info-circle"></i>&nbsp; License and copyright notice </a></div>
 </div>
 <div class="right hidden">
 <h3 class="results">Metadata</h3>
